@@ -1,0 +1,44 @@
+{
+  "rules": [
+    {
+      "id": "4fe78471-e4f5-4e4d-82c3-362cea3a1cd5",
+      "name": "Welcome Message",
+      "sessionId": "my-session-1",
+      "trigger": {
+        "type": "keyword",
+        "keywords": [
+          "halo",
+          "hi",
+          "siang",
+          "pagi",
+          "malam",
+          "sore",
+          "salam",
+          "assalamu'alaikum"
+        ],
+        "matchType": "contains",
+        "pattern": "",
+        "flags": "i"
+      },
+      "conditions": {
+        "chatType": "personal",
+        "timeRange": {
+          "enabled": false,
+          "start": "00:00",
+          "end": "23:59"
+        },
+        "excludeContacts": []
+      },
+      "action": {
+        "type": "reply",
+        "message": "Halo {name}, Apa ada yang bisa kami bantu?",
+        "delay": 1000
+      },
+      "priority": 0,
+      "enabled": true,
+      "createdAt": "2025-12-26T09:04:05.696Z",
+      "matchCount": 5,
+      "lastMatchedAt": "2025-12-26T10:26:38.625Z"
+    }
+  ]
+}

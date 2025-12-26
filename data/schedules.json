@@ -1,0 +1,21 @@
+{
+  "schedules": [
+    {
+      "id": "15865134-724a-46ee-b558-a9a953604cec",
+      "name": "Schedule 15865134",
+      "sessionId": "my-session-1",
+      "chatId": "6287882686952",
+      "message": "Ini adalah testing scheduled Message",
+      "scheduledAt": "2025-12-26T08:19:00.000Z",
+      "repeat": "once",
+      "typingTime": 0,
+      "timezone": "Asia/Jakarta",
+      "enabled": false,
+      "status": "completed",
+      "createdAt": "2025-12-26T08:17:30.746Z",
+      "executionCount": 1,
+      "lastExecuted": "2025-12-26T08:19:00.969Z",
+      "lastError": null
+    }
+  ]
+}

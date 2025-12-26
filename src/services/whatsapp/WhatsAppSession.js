@@ -301,6 +301,80 @@ class WhatsAppSession {
                 
                 // Send webhook
                 this._sendWebhook('message', formattedMessage);
+                
+                // Process auto-reply rules
+                try {
+                    const autoReplyService = require('../autoreply');
+                    const replyAction = await autoReplyService.processMessage(this.sessionId, message);
+                    
+                    if (replyAction) {
+                        console.log(`🤖 [${this.sessionId}] Auto-reply triggered: "${replyAction.ruleName}"`);
+                        
+                        // Wait for the configured delay
+                        if (replyAction.delay > 0) {
+                            await new Promise(resolve => setTimeout(resolve, replyAction.delay));
+                        }
+                        
+                        // Send the auto-reply
+                        await this.sendTextMessage(replyAction.chatId, replyAction.message, 1000);
+                        
+                        // Emit auto-reply event to WebSocket
+                        wsManager.emitToSession(this.sessionId, 'auto-reply.triggered', {
+                            ruleId: replyAction.ruleId,
+                            ruleName: replyAction.ruleName,
+                            chatId: replyAction.chatId,
+                            message: replyAction.message
+                        });
+                        
+                        // Skip AI if auto-reply was triggered
+                        return;
+                    }
+                } catch (autoReplyError) {
+                    console.error(`[${this.sessionId}] Auto-reply error:`, autoReplyError.message);
+                }
+
+                // Process AI chatbot
+                try {
+                    const aiService = require('../ai');
+                    const messageText = message.message?.conversation || 
+                                       message.message?.extendedTextMessage?.text || '';
+                    
+                    if (messageText) {
+                        const chatId = message.key.remoteJid;
+                        const isGroup = chatId.endsWith('@g.us');
+                        const senderName = message.pushName || 'User';
+                        
+                        // Check if AI should process this message
+                        if (aiService.shouldProcess(this.sessionId, messageText, isGroup)) {
+                            console.log(`🧠 [${this.sessionId}] Processing AI for: ${chatId}`);
+                            
+                            const aiResponse = await aiService.processMessage(
+                                this.sessionId, 
+                                chatId, 
+                                messageText, 
+                                senderName
+                            );
+                            
+                            if (aiResponse && aiResponse.success) {
+                                // Send AI response
+                                await this.sendTextMessage(chatId, aiResponse.message, 1500);
+                                
+                                console.log(`🤖 [${this.sessionId}] AI responded (${aiResponse.provider})`);
+                                
+                                // Emit AI event to WebSocket
+                                wsManager.emitToSession(this.sessionId, 'ai.response', {
+                                    chatId,
+                                    provider: aiResponse.provider,
+                                    model: aiResponse.model
+                                });
+                            } else if (aiResponse && !aiResponse.success) {
+                                console.error(`[${this.sessionId}] AI error:`, aiResponse.error);
+                            }
+                        }
+                    }
+                } catch (aiError) {
+                    console.error(`[${this.sessionId}] AI processing error:`, aiError.message);
+                }
             } else if (message.key.fromMe && m.type === 'notify') {
                 // Message sent confirmation
                 const formattedMessage = MessageFormatter.formatMessage(message);

@@ -1,6 +1,16 @@
 const express = require('express');
 const router = express.Router();
 const whatsappManager = require('../services/whatsapp');
+const schedulerService = require('../services/scheduler');
+const autoReplyService = require('../services/autoreply');
+const broadcastService = require('../services/broadcast');
+const aiService = require('../services/ai');
+
+// Initialize services with WhatsApp manager
+schedulerService.setWhatsAppManager(whatsappManager);
+autoReplyService.setWhatsAppManager(whatsappManager);
+broadcastService.setWhatsAppManager(whatsappManager);
+aiService.setWhatsAppManager(whatsappManager);
 
 // Get all sessions
 router.get('/sessions', (req, res) => {
@@ -1016,6 +1026,571 @@ router.post('/groups/revoke-invite', checkSession, async (req, res) => {
             success: false,
             message: error.message
         });
+    }
+});
+
+// ==================== SCHEDULER API ====================
+
+/**
+ * Get all scheduled messages
+ * Query: ?sessionId=xxx&status=pending&limit=50&offset=0
+ */
+router.get('/schedules', (req, res) => {
+    try {
+        const { sessionId, status, limit, offset } = req.query;
+        const result = schedulerService.getAll({
+            sessionId,
+            status,
+            limit: limit ? parseInt(limit) : 50,
+            offset: offset ? parseInt(offset) : 0
+        });
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Get scheduler stats
+ */
+router.get('/schedules/stats', (req, res) => {
+    try {
+        const stats = schedulerService.getStats();
+        res.json({
+            success: true,
+            data: stats
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Get a single scheduled message
+ */
+router.get('/schedules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = schedulerService.getById(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Create a new scheduled message
+ * Body: { sessionId, chatId, message, scheduledAt, repeat?, name?, typingTime?, timezone? }
+ */
+router.post('/schedules', (req, res) => {
+    try {
+        const { sessionId, chatId, message, scheduledAt, repeat, name, typingTime, timezone } = req.body;
+        
+        // Validate session exists
+        const session = whatsappManager.getSession(sessionId);
+        if (!session) {
+            return res.status(404).json({
+                success: false,
+                message: 'Session not found'
+            });
+        }
+        
+        const result = schedulerService.create({
+            sessionId,
+            chatId,
+            message,
+            scheduledAt,
+            repeat: repeat || 'once',
+            name,
+            typingTime: typingTime || 0,
+            timezone: timezone || 'Asia/Jakarta'
+        });
+        
+        if (!result.success) {
+            return res.status(400).json(result);
+        }
+        
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Update a scheduled message
+ * Body: { name?, chatId?, message?, scheduledAt?, repeat?, typingTime?, timezone?, enabled? }
+ */
+router.patch('/schedules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+        
+        const result = schedulerService.update(id, updates);
+        
+        if (!result.success) {
+            return res.status(result.message === 'Schedule not found' ? 404 : 400).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Toggle schedule enabled/disabled
+ */
+router.post('/schedules/:id/toggle', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = schedulerService.toggle(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Delete a scheduled message
+ */
+router.delete('/schedules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = schedulerService.delete(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// ==================== AUTO-REPLY RULES API ====================
+
+/**
+ * Get all auto-reply rules
+ * Query: ?sessionId=xxx&enabled=true&limit=50&offset=0
+ */
+router.get('/rules', (req, res) => {
+    try {
+        const { sessionId, enabled, limit, offset } = req.query;
+        const result = autoReplyService.getAll({
+            sessionId,
+            enabled: enabled !== undefined ? enabled === 'true' : undefined,
+            limit: limit ? parseInt(limit) : 50,
+            offset: offset ? parseInt(offset) : 0
+        });
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Get auto-reply stats
+ */
+router.get('/rules/stats', (req, res) => {
+    try {
+        const stats = autoReplyService.getStats();
+        res.json({
+            success: true,
+            data: stats
+        });
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Get a single rule
+ */
+router.get('/rules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = autoReplyService.getById(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Create a new auto-reply rule
+ * Body: { name, sessionId?, trigger, conditions?, action, priority? }
+ */
+router.post('/rules', (req, res) => {
+    try {
+        const { name, sessionId, trigger, conditions, action, priority } = req.body;
+        
+        const result = autoReplyService.create({
+            name,
+            sessionId: sessionId || '*',
+            trigger,
+            conditions,
+            action,
+            priority: priority || 0
+        });
+        
+        if (!result.success) {
+            return res.status(400).json(result);
+        }
+        
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Update an auto-reply rule
+ */
+router.patch('/rules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const updates = req.body;
+        
+        const result = autoReplyService.update(id, updates);
+        
+        if (!result.success) {
+            return res.status(result.message === 'Rule not found' ? 404 : 400).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Toggle rule enabled/disabled
+ */
+router.post('/rules/:id/toggle', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = autoReplyService.toggle(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+/**
+ * Delete an auto-reply rule
+ */
+router.delete('/rules/:id', (req, res) => {
+    try {
+        const { id } = req.params;
+        const result = autoReplyService.delete(id);
+        
+        if (!result.success) {
+            return res.status(404).json(result);
+        }
+        
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({
+            success: false,
+            message: error.message
+        });
+    }
+});
+
+// ==================== BROADCAST API ====================
+
+/**
+ * Get all broadcasts
+ */
+router.get('/broadcasts', (req, res) => {
+    try {
+        const { sessionId, status, limit, offset } = req.query;
+        const result = broadcastService.getAll({
+            sessionId,
+            status,
+            limit: limit ? parseInt(limit) : 50,
+            offset: offset ? parseInt(offset) : 0
+        });
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Get broadcast stats
+ */
+router.get('/broadcasts/stats', (req, res) => {
+    try {
+        const stats = broadcastService.getStats();
+        res.json({ success: true, data: stats });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Get single broadcast
+ */
+router.get('/broadcasts/:id', (req, res) => {
+    try {
+        const result = broadcastService.getById(req.params.id);
+        if (!result.success) return res.status(404).json(result);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Create a new broadcast
+ */
+router.post('/broadcasts', (req, res) => {
+    try {
+        const { name, sessionId, recipients, message, mediaUrl, mediaType, caption, scheduledAt } = req.body;
+        
+        // Validate session exists
+        const session = whatsappManager.getSession(sessionId);
+        if (!session) {
+            return res.status(404).json({ success: false, message: 'Session not found' });
+        }
+        
+        const result = broadcastService.create({
+            name,
+            sessionId,
+            recipients,
+            message,
+            mediaUrl,
+            mediaType,
+            caption,
+            scheduledAt
+        });
+        
+        if (!result.success) return res.status(400).json(result);
+        res.status(201).json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Start a broadcast
+ */
+router.post('/broadcasts/:id/start', async (req, res) => {
+    try {
+        const result = await broadcastService.start(req.params.id);
+        if (!result.success) {
+            return res.status(result.message.includes('not found') ? 404 : 400).json(result);
+        }
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Pause a broadcast
+ */
+router.post('/broadcasts/:id/pause', (req, res) => {
+    try {
+        const result = broadcastService.pause(req.params.id);
+        if (!result.success) {
+            return res.status(result.message.includes('not found') ? 404 : 400).json(result);
+        }
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Cancel a broadcast
+ */
+router.post('/broadcasts/:id/cancel', (req, res) => {
+    try {
+        const result = broadcastService.cancel(req.params.id);
+        if (!result.success) {
+            return res.status(result.message.includes('not found') ? 404 : 400).json(result);
+        }
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Delete a broadcast
+ */
+router.delete('/broadcasts/:id', (req, res) => {
+    try {
+        const result = broadcastService.delete(req.params.id);
+        if (!result.success) {
+            return res.status(result.message.includes('not found') ? 404 : 400).json(result);
+        }
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+// ==================== AI CHATBOT API ====================
+
+/**
+ * Get AI config for a session
+ */
+router.get('/ai/config/:sessionId', (req, res) => {
+    try {
+        const config = aiService.getConfig(req.params.sessionId);
+        // Don't expose API key
+        const { apiKey, ...safeConfig } = config;
+        res.json({ 
+            success: true, 
+            data: { ...safeConfig, hasApiKey: !!apiKey } 
+        });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Get all AI configs
+ */
+router.get('/ai/configs', (req, res) => {
+    try {
+        const configs = aiService.getAllConfigs();
+        res.json({ success: true, data: configs });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Get AI stats
+ */
+router.get('/ai/stats', (req, res) => {
+    try {
+        const stats = aiService.getStats();
+        res.json({ success: true, data: stats });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Enable AI for a session
+ */
+router.post('/ai/enable/:sessionId', (req, res) => {
+    try {
+        const { apiKey, provider = 'openai' } = req.body;
+        
+        if (!apiKey) {
+            return res.status(400).json({ success: false, message: 'API key is required' });
+        }
+        
+        const result = aiService.enable(req.params.sessionId, apiKey, provider);
+        // Don't expose API key in response
+        const { apiKey: _, ...safeData } = result.data;
+        res.json({ ...result, data: { ...safeData, hasApiKey: true } });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Disable AI for a session
+ */
+router.post('/ai/disable/:sessionId', (req, res) => {
+    try {
+        const result = aiService.disable(req.params.sessionId);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Update AI config for a session
+ */
+router.patch('/ai/config/:sessionId', (req, res) => {
+    try {
+        const result = aiService.updateConfig(req.params.sessionId, req.body);
+        // Don't expose API key in response
+        const { apiKey, ...safeData } = result.data;
+        res.json({ ...result, data: { ...safeData, hasApiKey: !!apiKey } });
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
+    }
+});
+
+/**
+ * Clear conversation history for a chat
+ */
+router.delete('/ai/history/:chatId', (req, res) => {
+    try {
+        const result = aiService.clearHistory(req.params.chatId);
+        res.json(result);
+    } catch (error) {
+        res.status(500).json({ success: false, message: error.message });
     }
 });
 

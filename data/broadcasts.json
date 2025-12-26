@@ -1,0 +1,74 @@
+{
+  "broadcasts": [
+    {
+      "id": "5a3ad975-da72-4159-8aba-28f59417875c",
+      "name": "Test campaign",
+      "sessionId": "my-session-1",
+      "message": "Ini adalah test promosi otomatis, untuk testing aja. hehe",
+      "mediaUrl": null,
+      "mediaType": null,
+      "caption": null,
+      "scheduledAt": null,
+      "recipients": [
+        {
+          "chatId": "6287882686952",
+          "status": "sent",
+          "sentAt": "2025-12-26T09:28:05.822Z",
+          "error": null
+        },
+        {
+          "chatId": "6289668067120",
+          "status": "sent",
+          "sentAt": "2025-12-26T09:28:16.704Z",
+          "error": null
+        }
+      ],
+      "status": "completed",
+      "stats": {
+        "total": 2,
+        "sent": 2,
+        "failed": 0,
+        "pending": 0
+      },
+      "createdAt": "2025-12-26T09:27:54.751Z",
+      "startedAt": "2025-12-26T09:28:03.064Z",
+      "completedAt": "2025-12-26T09:28:21.082Z",
+      "currentIndex": 2
+    },
+    {
+      "id": "15593223-1b02-4288-b1f0-d34b27e1a89e",
+      "name": "New promosi test",
+      "sessionId": "my-session-1",
+      "message": "Ini adalah test promosi otomatis, untuk testing aja. hehe",
+      "mediaUrl": null,
+      "mediaType": null,
+      "caption": null,
+      "scheduledAt": null,
+      "recipients": [
+        {
+          "chatId": "6289668067120",
+          "status": "sent",
+          "sentAt": "2025-12-26T09:43:04.517Z",
+          "error": null
+        },
+        {
+          "chatId": "6287882686952",
+          "status": "sent",
+          "sentAt": "2025-12-26T09:43:12.684Z",
+          "error": null
+        }
+      ],
+      "status": "completed",
+      "stats": {
+        "total": 2,
+        "sent": 2,
+        "failed": 0,
+        "pending": 0
+      },
+      "createdAt": "2025-12-26T09:42:54.554Z",
+      "startedAt": "2025-12-26T09:43:01.623Z",
+      "completedAt": "2025-12-26T09:43:20.472Z",
+      "currentIndex": 2
+    }
+  ]
+}

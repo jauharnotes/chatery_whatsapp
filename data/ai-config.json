@@ -1,0 +1,24 @@
+{
+  "sessions": {
+    "my-session-1": {
+      "enabled": true,
+      "provider": "rag",
+      "model": "knowledge-base",
+      "apiKey": "rag-mode",
+      "systemPrompt": "Kamu adalah asisten virtual yang ramah dan membantu. Jawab pertanyaan dengan singkat dan jelas dalam Bahasa Indonesia.",
+      "maxTokens": 500,
+      "temperature": 0.7,
+      "contextLimit": 10,
+      "triggerMode": "all",
+      "triggerKeywords": [
+        "ai",
+        "bot",
+        "assistant"
+      ],
+      "excludeGroups": false,
+      "typingDelay": 1000,
+      "ragEnabled": true,
+      "ragApiUrl": "http://localhost:3002/api"
+    }
+  }
+}

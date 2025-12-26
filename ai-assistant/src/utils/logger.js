@@ -1,0 +1,13 @@
+// Simple logger wrapper to allow future expansion (e.g. streaming to external logs)
+const logger = {
+  info: (...args) => console.log(new Date().toISOString(), '[INFO]', ...args),
+  error: (...args) => console.error(new Date().toISOString(), '[ERROR]', ...args),
+  warn: (...args) => console.warn(new Date().toISOString(), '[WARN]', ...args),
+  debug: (...args) => {
+    if (process.env.NODE_ENV !== 'production') {
+      console.log(new Date().toISOString(), '[DEBUG]', ...args);
+    }
+  }
+};
+
+module.exports = logger;

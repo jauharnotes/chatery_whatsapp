@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -142,10 +143,21 @@
             font-weight: 700;
         }
 
-        .stat-value.success { color: var(--success); }
-        .stat-value.warning { color: var(--warning); }
-        .stat-value.info { color: var(--info); }
-        .stat-value.danger { color: var(--danger); }
+        .stat-value.success {
+            color: var(--success);
+        }
+
+        .stat-value.warning {
+            color: var(--warning);
+        }
+
+        .stat-value.info {
+            color: var(--info);
+        }
+
+        .stat-value.danger {
+            color: var(--danger);
+        }
 
         /* Main Grid */
         .main-grid {
@@ -472,10 +484,25 @@
             flex-shrink: 0;
         }
 
-        .event-type.message { background: rgba(46, 213, 115, 0.1); color: var(--success); }
-        .event-type.connection { background: rgba(52, 152, 219, 0.1); color: var(--info); }
-        .event-type.qr { background: rgba(255, 165, 2, 0.1); color: var(--warning); }
-        .event-type.error { background: rgba(255, 71, 87, 0.1); color: var(--danger); }
+        .event-type.message {
+            background: rgba(46, 213, 115, 0.1);
+            color: var(--success);
+        }
+
+        .event-type.connection {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--info);
+        }
+
+        .event-type.qr {
+            background: rgba(255, 165, 2, 0.1);
+            color: var(--warning);
+        }
+
+        .event-type.error {
+            background: rgba(255, 71, 87, 0.1);
+            color: var(--danger);
+        }
 
         .event-content {
             color: var(--text-muted);
@@ -538,15 +565,24 @@
             min-width: 300px;
         }
 
-        .toast.success { border-color: var(--success); }
-        .toast.error { border-color: var(--danger); }
-        .toast.info { border-color: var(--info); }
+        .toast.success {
+            border-color: var(--success);
+        }
+
+        .toast.error {
+            border-color: var(--danger);
+        }
+
+        .toast.info {
+            border-color: var(--info);
+        }
 
         @keyframes slideIn {
             from {
                 opacity: 0;
                 transform: translateX(100px);
             }
+
             to {
                 opacity: 1;
                 transform: translateX(0);
@@ -594,7 +630,9 @@
         }
 
         @keyframes spin {
-            to { transform: rotate(360deg); }
+            to {
+                transform: rotate(360deg);
+            }
         }
 
         /* API Tester */
@@ -662,10 +700,25 @@
             margin-right: 8px;
         }
 
-        .method-badge.get { background: rgba(46, 213, 115, 0.2); color: var(--success); }
-        .method-badge.post { background: rgba(52, 152, 219, 0.2); color: var(--info); }
-        .method-badge.delete { background: rgba(255, 71, 87, 0.2); color: var(--danger); }
-        .method-badge.put { background: rgba(255, 165, 2, 0.2); color: var(--warning); }
+        .method-badge.get {
+            background: rgba(46, 213, 115, 0.2);
+            color: var(--success);
+        }
+
+        .method-badge.post {
+            background: rgba(52, 152, 219, 0.2);
+            color: var(--info);
+        }
+
+        .method-badge.delete {
+            background: rgba(255, 71, 87, 0.2);
+            color: var(--danger);
+        }
+
+        .method-badge.put {
+            background: rgba(255, 165, 2, 0.2);
+            color: var(--warning);
+        }
 
         /* API Help */
         .api-help {
@@ -745,8 +798,230 @@
         .btn-github:hover {
             background: #555;
         }
+
+        /* Main Tabs */
+        .main-tabs {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 24px;
+            padding: 4px;
+            background: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border);
+            overflow-x: auto;
+        }
+
+        .main-tabs .tab {
+            flex: 1;
+            min-width: 120px;
+            padding: 12px 20px;
+            background: transparent;
+            border: none;
+            border-radius: 8px;
+            color: var(--text-muted);
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .main-tabs .tab:hover {
+            color: var(--text);
+            background: var(--bg-dark);
+        }
+
+        .main-tabs .tab.active {
+            background: var(--primary);
+            color: #000;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Scheduler Styles */
+        .schedule-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .schedule-item:hover {
+            border-color: var(--primary);
+        }
+
+        .schedule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .schedule-title {
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .schedule-status {
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        .schedule-status.pending {
+            background: rgba(255, 165, 2, 0.1);
+            color: var(--warning);
+        }
+
+        .schedule-status.completed {
+            background: rgba(46, 213, 115, 0.1);
+            color: var(--success);
+        }
+
+        .schedule-status.disabled {
+            background: rgba(136, 136, 136, 0.1);
+            color: var(--text-muted);
+        }
+
+        .schedule-details {
+            font-size: 13px;
+            color: var(--text-muted);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .schedule-details span {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .schedule-message {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 12px 0;
+            font-size: 13px;
+            max-height: 60px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .schedule-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+        }
+
+        .repeat-badge {
+            padding: 2px 8px;
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--info);
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: 500;
+        }
+
+        /* Auto-Reply Rules Styles */
+        .rule-item {
+            background: var(--bg-dark);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 16px;
+            margin-bottom: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .rule-item:hover {
+            border-color: var(--primary);
+        }
+
+        .rule-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 12px;
+        }
+
+        .rule-title {
+            font-weight: 600;
+            font-size: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rule-trigger {
+            background: var(--bg-card);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin: 8px 0;
+            font-size: 13px;
+        }
+
+        .rule-trigger-type {
+            color: var(--text-muted);
+            font-size: 11px;
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        .rule-reply {
+            background: rgba(46, 213, 115, 0.1);
+            border-left: 3px solid var(--success);
+            border-radius: 0 8px 8px 0;
+            padding: 10px 12px;
+            margin: 8px 0;
+            font-size: 13px;
+            max-height: 60px;
+            overflow: hidden;
+        }
+
+        .rule-conditions {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 8px;
+        }
+
+        .rule-condition-badge {
+            padding: 4px 8px;
+            background: rgba(155, 89, 182, 0.1);
+            color: #9b59b6;
+            border-radius: 4px;
+            font-size: 11px;
+        }
+
+        .keyword-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: rgba(52, 152, 219, 0.15);
+            color: var(--info);
+            border-radius: 4px;
+            font-size: 12px;
+            margin: 2px;
+        }
+
+        .match-count {
+            font-size: 11px;
+            color: var(--text-muted);
+        }
     </style>
 </head>
+
 <body>
     <!-- Header -->
     <header class="header">
@@ -785,161 +1060,351 @@
             </div>
         </div>
 
-        <!-- Main Grid -->
-        <div class="main-grid">
-            <!-- Left Column -->
-            <div>
-                <!-- Sessions Card -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📱 Sessions</div>
-                        <button class="btn btn-primary btn-sm" onclick="showCreateSession()">
-                            + New Session
-                        </button>
+        <!-- Main Tabs -->
+        <div class="main-tabs">
+            <button class="tab active" data-tab="sessions" onclick="switchTab('sessions')">📱 Sessions</button>
+            <button class="tab" data-tab="scheduler" onclick="switchTab('scheduler')">⏰ Scheduler</button>
+            <button class="tab" data-tab="autoreply" onclick="switchTab('autoreply')">🤖 Auto-Reply</button>
+            <button class="tab" data-tab="broadcast" onclick="switchTab('broadcast')">📢 Broadcast</button>
+            <button class="tab" data-tab="ai" onclick="switchTab('ai')">🧠 AI</button>
+        </div>
+
+        <!-- Tab Content: Sessions -->
+        <div id="tab-sessions" class="tab-content active">
+            <!-- Main Grid -->
+            <div class="main-grid">
+                <!-- Left Column -->
+                <div>
+                    <!-- Sessions Card -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">📱 Sessions</div>
+                            <button class="btn btn-primary btn-sm" onclick="showCreateSession()">
+                                + New Session
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <div id="sessionsList" class="session-list">
+                                <div class="empty-state">
+                                    <div class="empty-state-icon">📱</div>
+                                    <p>No sessions yet</p>
+                                    <p style="font-size: 13px; margin-top: 8px;">Create a new session to get started</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div id="sessionsList" class="session-list">
-                            <div class="empty-state">
-                                <div class="empty-state-icon">📱</div>
-                                <p>No sessions yet</p>
-                                <p style="font-size: 13px; margin-top: 8px;">Create a new session to get started</p>
+
+                    <!-- API Tester -->
+                    <div class="card api-tester">
+                        <div class="card-header">
+                            <div class="card-title">🧪 API Tester</div>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Endpoint</label>
+                                <select class="endpoint-select" id="apiEndpoint" onchange="updateRequestBody()">
+                                    <optgroup label="Sessions">
+                                        <option value="GET|/api/whatsapp/sessions">GET /sessions - List all sessions
+                                        </option>
+                                        <option value="GET|/api/whatsapp/sessions/{sessionId}/status">GET
+                                            /sessions/:sessionId/status - Get session status</option>
+                                        <option value="GET|/api/whatsapp/sessions/{sessionId}/qr">GET
+                                            /sessions/:sessionId/qr - Get QR code</option>
+                                        <option value="POST|/api/whatsapp/sessions/{sessionId}/connect">POST
+                                            /sessions/:sessionId/connect - Connect session</option>
+                                        <option value="PATCH|/api/whatsapp/sessions/{sessionId}/config">PATCH
+                                            /sessions/:sessionId/config - Update config</option>
+                                        <option value="POST|/api/whatsapp/sessions/{sessionId}/webhooks">POST
+                                            /sessions/:sessionId/webhooks - Add webhook</option>
+                                        <option value="DELETE|/api/whatsapp/sessions/{sessionId}/webhooks">DELETE
+                                            /sessions/:sessionId/webhooks - Remove webhook</option>
+                                        <option value="DELETE|/api/whatsapp/sessions/{sessionId}">DELETE
+                                            /sessions/:sessionId - Delete session</option>
+                                    </optgroup>
+                                    <optgroup label="Messaging">
+                                        <option value="POST|/api/whatsapp/chats/send-text">POST /chats/send-text - Send
+                                            text message</option>
+                                        <option value="POST|/api/whatsapp/chats/send-image">POST /chats/send-image -
+                                            Send image</option>
+                                        <option value="POST|/api/whatsapp/chats/send-document">POST /chats/send-document
+                                            - Send document</option>
+                                        <option value="POST|/api/whatsapp/chats/send-location">POST /chats/send-location
+                                            - Send location</option>
+                                        <option value="POST|/api/whatsapp/chats/send-contact">POST /chats/send-contact -
+                                            Send contact</option>
+                                        <option value="POST|/api/whatsapp/chats/send-button">POST /chats/send-button -
+                                            Send button message</option>
+                                        <option value="POST|/api/whatsapp/chats/presence">POST /chats/presence - Send
+                                            typing indicator</option>
+                                        <option value="POST|/api/whatsapp/chats/check-number">POST /chats/check-number -
+                                            Check number exists</option>
+                                        <option value="POST|/api/whatsapp/chats/profile-picture">POST
+                                            /chats/profile-picture - Get profile picture</option>
+                                    </optgroup>
+                                    <optgroup label="Chat History">
+                                        <option value="POST|/api/whatsapp/chats/overview">POST /chats/overview - Get
+                                            chats overview</option>
+                                        <option value="POST|/api/whatsapp/contacts">POST /contacts - Get contacts
+                                        </option>
+                                        <option value="POST|/api/whatsapp/chats/messages">POST /chats/messages - Get
+                                            chat messages</option>
+                                        <option value="POST|/api/whatsapp/chats/info">POST /chats/info - Get chat info
+                                        </option>
+                                        <option value="POST|/api/whatsapp/chats/mark-read">POST /chats/mark-read - Mark
+                                            chat as read</option>
+                                    </optgroup>
+                                    <optgroup label="Groups - Basic">
+                                        <option value="POST|/api/whatsapp/groups">POST /groups - Get all groups</option>
+                                        <option value="POST|/api/whatsapp/groups/create">POST /groups/create - Create
+                                            new group</option>
+                                        <option value="POST|/api/whatsapp/groups/metadata">POST /groups/metadata - Get
+                                            group metadata</option>
+                                        <option value="POST|/api/whatsapp/groups/leave">POST /groups/leave - Leave group
+                                        </option>
+                                        <option value="POST|/api/whatsapp/groups/join">POST /groups/join - Join via
+                                            invite code</option>
+                                    </optgroup>
+                                    <optgroup label="Groups - Participants">
+                                        <option value="POST|/api/whatsapp/groups/participants/add">POST
+                                            /groups/participants/add - Add participants</option>
+                                        <option value="POST|/api/whatsapp/groups/participants/remove">POST
+                                            /groups/participants/remove - Remove participants</option>
+                                        <option value="POST|/api/whatsapp/groups/participants/promote">POST
+                                            /groups/participants/promote - Promote to admin</option>
+                                        <option value="POST|/api/whatsapp/groups/participants/demote">POST
+                                            /groups/participants/demote - Demote from admin</option>
+                                    </optgroup>
+                                    <optgroup label="Groups - Settings">
+                                        <option value="POST|/api/whatsapp/groups/subject">POST /groups/subject - Update
+                                            group name</option>
+                                        <option value="POST|/api/whatsapp/groups/description">POST /groups/description -
+                                            Update description</option>
+                                        <option value="POST|/api/whatsapp/groups/settings">POST /groups/settings -
+                                            Update settings</option>
+                                        <option value="POST|/api/whatsapp/groups/picture">POST /groups/picture - Update
+                                            picture</option>
+                                        <option value="POST|/api/whatsapp/groups/invite-code">POST /groups/invite-code -
+                                            Get invite link</option>
+                                        <option value="POST|/api/whatsapp/groups/revoke-invite">POST
+                                            /groups/revoke-invite - Revoke invite link</option>
+                                    </optgroup>
+                                    <optgroup label="WebSocket">
+                                        <option value="GET|/api/websocket/stats">GET /websocket/stats - WebSocket stats
+                                        </option>
+                                    </optgroup>
+                                    <optgroup label="System">
+                                        <option value="GET|/api/health">GET /health - Health check</option>
+                                    </optgroup>
+                                </select>
+                            </div>
+                            <div class="form-group" id="sessionIdGroup" style="display: none;">
+                                <label class="form-label">Session ID (for URL)</label>
+                                <input type="text" class="form-input" id="apiSessionId" placeholder="Enter session ID">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Request Body (JSON)</label>
+                                <textarea class="json-editor" id="apiBody" placeholder="{}"></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="sendApiRequest()" id="btnSendApi">
+                                Send Request
+                            </button>
+                            <div class="api-help" id="apiHelp" style="display: none;"></div>
+                            <div class="form-group" style="margin-top: 16px;">
+                                <label class="form-label">Response</label>
+                                <div class="response-box" id="apiResponse">Response will appear here...</div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- API Tester -->
-                <div class="card api-tester">
-                    <div class="card-header">
-                        <div class="card-title">🧪 API Tester</div>
+                <!-- Right Column -->
+                <div>
+                    <!-- Events Log -->
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="card-title">📡 Live Events</div>
+                            <button class="btn btn-outline btn-sm" onclick="clearEvents()">Clear</button>
+                        </div>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="events-log" id="eventsLog">
+                                <div class="empty-state">
+                                    <div class="empty-state-icon">📡</div>
+                                    <p>No events yet</p>
+                                    <p style="font-size: 13px; margin-top: 8px;">Events will appear here in real-time
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
-                            <label class="form-label">Endpoint</label>
-                            <select class="endpoint-select" id="apiEndpoint" onchange="updateRequestBody()">
-                                <optgroup label="Sessions">
-                                    <option value="GET|/api/whatsapp/sessions">GET /sessions - List all sessions</option>
-                                    <option value="GET|/api/whatsapp/sessions/{sessionId}/status">GET /sessions/:sessionId/status - Get session status</option>
-                                    <option value="GET|/api/whatsapp/sessions/{sessionId}/qr">GET /sessions/:sessionId/qr - Get QR code</option>
-                                    <option value="POST|/api/whatsapp/sessions/{sessionId}/connect">POST /sessions/:sessionId/connect - Connect session</option>
-                                    <option value="PATCH|/api/whatsapp/sessions/{sessionId}/config">PATCH /sessions/:sessionId/config - Update config</option>
-                                    <option value="POST|/api/whatsapp/sessions/{sessionId}/webhooks">POST /sessions/:sessionId/webhooks - Add webhook</option>
-                                    <option value="DELETE|/api/whatsapp/sessions/{sessionId}/webhooks">DELETE /sessions/:sessionId/webhooks - Remove webhook</option>
-                                    <option value="DELETE|/api/whatsapp/sessions/{sessionId}">DELETE /sessions/:sessionId - Delete session</option>
-                                </optgroup>
-                                <optgroup label="Messaging">
-                                    <option value="POST|/api/whatsapp/chats/send-text">POST /chats/send-text - Send text message</option>
-                                    <option value="POST|/api/whatsapp/chats/send-image">POST /chats/send-image - Send image</option>
-                                    <option value="POST|/api/whatsapp/chats/send-document">POST /chats/send-document - Send document</option>
-                                    <option value="POST|/api/whatsapp/chats/send-location">POST /chats/send-location - Send location</option>
-                                    <option value="POST|/api/whatsapp/chats/send-contact">POST /chats/send-contact - Send contact</option>
-                                    <option value="POST|/api/whatsapp/chats/send-button">POST /chats/send-button - Send button message</option>
-                                    <option value="POST|/api/whatsapp/chats/presence">POST /chats/presence - Send typing indicator</option>
-                                    <option value="POST|/api/whatsapp/chats/check-number">POST /chats/check-number - Check number exists</option>
-                                    <option value="POST|/api/whatsapp/chats/profile-picture">POST /chats/profile-picture - Get profile picture</option>
-                                </optgroup>
-                                <optgroup label="Chat History">
-                                    <option value="POST|/api/whatsapp/chats/overview">POST /chats/overview - Get chats overview</option>
-                                    <option value="POST|/api/whatsapp/contacts">POST /contacts - Get contacts</option>
-                                    <option value="POST|/api/whatsapp/chats/messages">POST /chats/messages - Get chat messages</option>
-                                    <option value="POST|/api/whatsapp/chats/info">POST /chats/info - Get chat info</option>
-                                    <option value="POST|/api/whatsapp/chats/mark-read">POST /chats/mark-read - Mark chat as read</option>
-                                </optgroup>
-                                <optgroup label="Groups - Basic">
-                                    <option value="POST|/api/whatsapp/groups">POST /groups - Get all groups</option>
-                                    <option value="POST|/api/whatsapp/groups/create">POST /groups/create - Create new group</option>
-                                    <option value="POST|/api/whatsapp/groups/metadata">POST /groups/metadata - Get group metadata</option>
-                                    <option value="POST|/api/whatsapp/groups/leave">POST /groups/leave - Leave group</option>
-                                    <option value="POST|/api/whatsapp/groups/join">POST /groups/join - Join via invite code</option>
-                                </optgroup>
-                                <optgroup label="Groups - Participants">
-                                    <option value="POST|/api/whatsapp/groups/participants/add">POST /groups/participants/add - Add participants</option>
-                                    <option value="POST|/api/whatsapp/groups/participants/remove">POST /groups/participants/remove - Remove participants</option>
-                                    <option value="POST|/api/whatsapp/groups/participants/promote">POST /groups/participants/promote - Promote to admin</option>
-                                    <option value="POST|/api/whatsapp/groups/participants/demote">POST /groups/participants/demote - Demote from admin</option>
-                                </optgroup>
-                                <optgroup label="Groups - Settings">
-                                    <option value="POST|/api/whatsapp/groups/subject">POST /groups/subject - Update group name</option>
-                                    <option value="POST|/api/whatsapp/groups/description">POST /groups/description - Update description</option>
-                                    <option value="POST|/api/whatsapp/groups/settings">POST /groups/settings - Update settings</option>
-                                    <option value="POST|/api/whatsapp/groups/picture">POST /groups/picture - Update picture</option>
-                                    <option value="POST|/api/whatsapp/groups/invite-code">POST /groups/invite-code - Get invite link</option>
-                                    <option value="POST|/api/whatsapp/groups/revoke-invite">POST /groups/revoke-invite - Revoke invite link</option>
-                                </optgroup>
-                                <optgroup label="WebSocket">
-                                    <option value="GET|/api/websocket/stats">GET /websocket/stats - WebSocket stats</option>
-                                </optgroup>
-                                <optgroup label="System">
-                                    <option value="GET|/api/health">GET /health - Health check</option>
-                                </optgroup>
-                            </select>
+
+                    <!-- Quick Send -->
+                    <div class="card" style="margin-top: 24px;">
+                        <div class="card-header">
+                            <div class="card-title">✉️ Quick Send</div>
                         </div>
-                        <div class="form-group" id="sessionIdGroup" style="display: none;">
-                            <label class="form-label">Session ID (for URL)</label>
-                            <input type="text" class="form-input" id="apiSessionId" placeholder="Enter session ID">
-                        </div>
-                        <div class="form-group">
-                            <label class="form-label">Request Body (JSON)</label>
-                            <textarea class="json-editor" id="apiBody" placeholder="{}"></textarea>
-                        </div>
-                        <button class="btn btn-primary" onclick="sendApiRequest()" id="btnSendApi">
-                            Send Request
-                        </button>
-                        <div class="api-help" id="apiHelp" style="display: none;"></div>
-                        <div class="form-group" style="margin-top: 16px;">
-                            <label class="form-label">Response</label>
-                            <div class="response-box" id="apiResponse">Response will appear here...</div>
+                        <div class="card-body">
+                            <div class="form-group">
+                                <label class="form-label">Session</label>
+                                <select class="form-input" id="quickSession">
+                                    <option value="">Select session...</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number</label>
+                                <input type="text" class="form-input" id="quickPhone" placeholder="628123456789">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Message</label>
+                                <textarea class="form-input" id="quickMessage" rows="3"
+                                    placeholder="Type your message..."></textarea>
+                            </div>
+                            <button class="btn btn-primary" onclick="quickSend()" style="width: 100%;">
+                                Send Message
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
+        </div> <!-- End tab-sessions -->
 
-            <!-- Right Column -->
-            <div>
-                <!-- Events Log -->
-                <div class="card">
-                    <div class="card-header">
-                        <div class="card-title">📡 Live Events</div>
-                        <button class="btn btn-outline btn-sm" onclick="clearEvents()">Clear</button>
-                    </div>
-                    <div class="card-body" style="padding: 0;">
-                        <div class="events-log" id="eventsLog">
-                            <div class="empty-state">
-                                <div class="empty-state-icon">📡</div>
-                                <p>No events yet</p>
-                                <p style="font-size: 13px; margin-top: 8px;">Events will appear here in real-time</p>
-                            </div>
+        <!-- Tab Content: Scheduler -->
+        <div id="tab-scheduler" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">⏰ Scheduled Messages</div>
+                    <button class="btn btn-primary btn-sm" onclick="showCreateSchedule()">
+                        + New Schedule
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="schedulesList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">⏰</div>
+                            <p>No scheduled messages</p>
+                            <p style="font-size: 13px; margin-top: 8px;">Create a schedule to send messages
+                                automatically</p>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div> <!-- End tab-scheduler -->
 
-                <!-- Quick Send -->
-                <div class="card" style="margin-top: 24px;">
-                    <div class="card-header">
-                        <div class="card-title">✉️ Quick Send</div>
+        <!-- Tab Content: Auto-Reply -->
+        <div id="tab-autoreply" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🤖 Auto-Reply Rules</div>
+                    <button class="btn btn-primary btn-sm" onclick="showCreateRule()">
+                        + New Rule
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="rulesList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">🤖</div>
+                            <p>No auto-reply rules</p>
+                            <p style="font-size: 13px; margin-top: 8px;">Create rules to automatically respond to
+                                messages</p>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <div class="form-group">
+                </div>
+            </div>
+        </div> <!-- End tab-autoreply -->
+
+        <!-- Tab Content: Broadcast -->
+        <div id="tab-broadcast" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">📢 Broadcast Campaigns</div>
+                    <button class="btn btn-primary btn-sm" onclick="showCreateBroadcast()">
+                        + New Broadcast
+                    </button>
+                </div>
+                <div class="card-body">
+                    <div id="broadcastsList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">📢</div>
+                            <p>No broadcast campaigns</p>
+                            <p style="font-size: 13px; margin-top: 8px;">Create a campaign to send bulk messages</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- End tab-broadcast -->
+
+        <!-- Tab Content: AI -->
+        <div id="tab-ai" class="tab-content">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">🧠 AI Chatbot Configuration</div>
+                </div>
+                <div class="card-body">
+                    <div id="aiConfigList">
+                        <div class="empty-state">
+                            <div class="empty-state-icon">🧠</div>
+                            <p>No sessions configured for AI</p>
+                            <p style="font-size: 13px; margin-top: 8px;">Select a session below to enable AI chatbot</p>
+                        </div>
+                    </div>
+
+                    <!-- AI Configuration Form -->
+                    <div style="background: var(--bg-dark); border-radius: 10px; padding: 16px; margin-top: 16px;">
+                        <h4 style="margin-bottom: 12px;">Configure AI for Session</h4>
+
+                        <div class="form-group" style="text-align: left;">
                             <label class="form-label">Session</label>
-                            <select class="form-input" id="quickSession">
+                            <select class="form-input" id="aiSession" onchange="loadAIConfig()">
                                 <option value="">Select session...</option>
                             </select>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Phone Number</label>
-                            <input type="text" class="form-input" id="quickPhone" placeholder="628123456789">
+
+                        <div class="form-group" style="text-align: left;">
+                            <label class="form-label">Provider</label>
+                            <select class="form-input" id="aiProvider" onchange="toggleRagFields()">
+                                <option value="openai">OpenAI (GPT)</option>
+                                <option value="gemini">Google Gemini</option>
+                                <option value="rag">🧠 Knowledge Base (RAG)</option>
+                            </select>
                         </div>
-                        <div class="form-group">
-                            <label class="form-label">Message</label>
-                            <textarea class="form-input" id="quickMessage" rows="3" placeholder="Type your message..."></textarea>
+
+                        <div class="form-group" style="text-align: left;" id="apiKeyGroup">
+                            <label class="form-label">API Key</label>
+                            <input type="password" class="form-input" id="aiApiKey" placeholder="sk-... or AIza...">
                         </div>
-                        <button class="btn btn-primary" onclick="quickSend()" style="width: 100%;">
-                            Send Message
-                        </button>
+
+                        <div class="form-group" style="text-align: left; display: none;" id="ragUrlGroup">
+                            <label class="form-label">RAG API URL</label>
+                            <input type="text" class="form-input" id="aiRagUrl" placeholder="http://localhost:3001/api">
+                            <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                                URL of the ai-assistant API (must be running)
+                            </p>
+                        </div>
+
+                        <div class="form-group" style="text-align: left;">
+                            <label class="form-label">System Prompt</label>
+                            <textarea class="form-input" id="aiSystemPrompt" rows="3"
+                                placeholder="Kamu adalah asisten virtual yang ramah..."></textarea>
+                        </div>
+
+                        <div class="form-group" style="text-align: left;">
+                            <label class="form-label">Trigger Mode</label>
+                            <select class="form-input" id="aiTriggerMode">
+                                <option value="all">All Messages</option>
+                                <option value="keyword">Keyword Trigger</option>
+                                <option value="mention">Mention Only (@ai)</option>
+                            </select>
+                        </div>
+
+                        <div style="display: flex; gap: 12px; margin-top: 16px;">
+                            <button class="btn btn-primary" onclick="enableAI()">✅ Enable AI</button>
+                            <button class="btn btn-outline" onclick="disableAI()">🚫 Disable AI</button>
+                            <button class="btn btn-outline" onclick="saveAIConfig()">💾 Save Config</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div> <!-- End tab-ai -->
+
     </div>
 
     <!-- Footer -->
@@ -952,12 +1417,12 @@
                 <a href="https://github.com/farinchan/chatery_whatsapp" target="_blank" class="btn btn-github">
                     ⭐ Star on GitHub
                 </a>
-                <a href="https://www.linkedin.com/in/fajri-chan" target="_blank" class="btn btn-outline">   
+                <a href="https://www.linkedin.com/in/fajri-chan" target="_blank" class="btn btn-outline">
                     💼 LinkedIn
                 </a>
             </div>
             <div class="footer-credit">
-                Made with ❤️ by <a href="https://github.com/farinchan" target="_blank">Farin Chan</a> | 
+                Made with ❤️ by <a href="https://github.com/farinchan" target="_blank">Farin Chan</a> |
                 <strong>Chatery API</strong> - WhatsApp Multi-Session Gateway
             </div>
             <div style="font-size: 12px; color: var(--text-muted);">
@@ -988,25 +1453,30 @@
         <div class="modal" style="max-width: 500px;">
             <div class="modal-title">➕ Create New Session</div>
             <div class="modal-subtitle">Enter session details and optional configuration</div>
-            
+
             <div class="form-group" style="text-align: left;">
                 <label class="form-label">Session ID *</label>
-                <input type="text" class="form-input" id="newSessionId" placeholder="e.g. my-session-1" pattern="[a-zA-Z0-9_-]+">
-                <small style="color: var(--text-muted); font-size: 12px;">Only letters, numbers, underscore, and dash allowed</small>
+                <input type="text" class="form-input" id="newSessionId" placeholder="e.g. my-session-1"
+                    pattern="[a-zA-Z0-9_-]+">
+                <small style="color: var(--text-muted); font-size: 12px;">Only letters, numbers, underscore, and dash
+                    allowed</small>
             </div>
-            
+
             <div class="form-group" style="text-align: left;">
                 <label class="form-label">Webhook URL (optional)</label>
-                <input type="url" class="form-input" id="newSessionWebhook" placeholder="https://your-server.com/webhook">
+                <input type="url" class="form-input" id="newSessionWebhook"
+                    placeholder="https://your-server.com/webhook">
                 <small style="color: var(--text-muted); font-size: 12px;">URL to receive WhatsApp events</small>
             </div>
-            
+
             <div class="form-group" style="text-align: left;">
                 <label class="form-label">Metadata (optional)</label>
-                <textarea class="form-input" id="newSessionMetadata" placeholder='{"appName": "MyApp", "userId": "123"}' style="min-height: 80px; font-family: monospace; font-size: 12px;"></textarea>
-                <small style="color: var(--text-muted); font-size: 12px;">Custom JSON data to associate with this session</small>
+                <textarea class="form-input" id="newSessionMetadata" placeholder='{"appName": "MyApp", "userId": "123"}'
+                    style="min-height: 80px; font-family: monospace; font-size: 12px;"></textarea>
+                <small style="color: var(--text-muted); font-size: 12px;">Custom JSON data to associate with this
+                    session</small>
             </div>
-            
+
             <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
                 <button class="btn btn-outline" onclick="closeCreateSessionModal()">Cancel</button>
                 <button class="btn btn-primary" onclick="createSession()">Create & Connect</button>
@@ -1019,41 +1489,52 @@
         <div class="modal" style="max-width: 600px;">
             <div class="modal-title">🔗 Manage Webhooks</div>
             <div class="modal-subtitle" id="webhooksSessionName">Session: -</div>
-            
+
             <!-- Add Webhook Form -->
-            <div style="background: var(--card-bg); border-radius: 8px; padding: 16px; margin-bottom: 16px; text-align: left;">
+            <div
+                style="background: var(--card-bg); border-radius: 8px; padding: 16px; margin-bottom: 16px; text-align: left;">
                 <div class="form-group" style="margin-bottom: 12px;">
                     <label class="form-label">Webhook URL</label>
-                    <input type="url" class="form-input" id="newWebhookUrl" placeholder="https://your-server.com/webhook">
+                    <input type="url" class="form-input" id="newWebhookUrl"
+                        placeholder="https://your-server.com/webhook">
                 </div>
                 <div class="form-group" style="margin-bottom: 12px;">
                     <label class="form-label">Events (optional - leave empty for all events)</label>
                     <div style="display: flex; flex-wrap: wrap; gap: 8px;">
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="message"> message
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="message_ack"> message_ack
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="message_revoke"> message_revoke
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="presence"> presence
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="qr"> qr
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="ready"> ready
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="disconnected"> disconnected
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="group_update"> group_update
                         </label>
-                        <label style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
+                        <label
+                            style="display: flex; align-items: center; gap: 4px; font-size: 12px; color: var(--text-muted);">
                             <input type="checkbox" class="webhook-event" value="group_participants"> group_participants
                         </label>
                     </div>
@@ -1068,9 +1549,183 @@
                     <div style="text-align: center; color: var(--text-muted); padding: 16px;">Loading...</div>
                 </div>
             </div>
-            
+
             <div style="margin-top: 16px;">
                 <button class="btn btn-outline" onclick="closeWebhooksModal()">Close</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Schedule Modal -->
+    <div class="modal-overlay" id="createScheduleModal">
+        <div class="modal" style="max-width: 500px;">
+            <div class="modal-title">⏰ Create Scheduled Message</div>
+            <div class="modal-subtitle">Schedule a message to be sent automatically</div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Schedule Name (optional)</label>
+                <input type="text" class="form-input" id="scheduleName" placeholder="e.g. Daily Reminder">
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Session *</label>
+                <select class="form-input" id="scheduleSession">
+                    <option value="">Select session...</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Recipient (Phone/Group ID) *</label>
+                <input type="text" class="form-input" id="scheduleChatId" placeholder="628123456789 or xxx@g.us">
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Message *</label>
+                <textarea class="form-input" id="scheduleMessage" rows="3"
+                    placeholder="Type your message..."></textarea>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <div class="form-group" style="text-align: left;">
+                    <label class="form-label">Date *</label>
+                    <input type="date" class="form-input" id="scheduleDate">
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label class="form-label">Time *</label>
+                    <input type="time" class="form-input" id="scheduleTime">
+                </div>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Repeat</label>
+                <select class="form-input" id="scheduleRepeat">
+                    <option value="once">Once (One-time)</option>
+                    <option value="daily">Daily</option>
+                    <option value="weekly">Weekly</option>
+                    <option value="monthly">Monthly</option>
+                </select>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="closeScheduleModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="createSchedule()">Create Schedule</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Rule Modal -->
+    <div class="modal-overlay" id="createRuleModal">
+        <div class="modal" style="max-width: 550px;">
+            <div class="modal-title">🤖 Create Auto-Reply Rule</div>
+            <div class="modal-subtitle">Set up automatic responses to incoming messages</div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Rule Name *</label>
+                <input type="text" class="form-input" id="ruleName" placeholder="e.g. Welcome Message">
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Apply to Session</label>
+                <select class="form-input" id="ruleSession">
+                    <option value="*">All Sessions</option>
+                </select>
+            </div>
+
+            <div style="background: var(--bg-dark); border-radius: 8px; padding: 12px; margin: 12px 0;">
+                <label class="form-label" style="margin-bottom: 8px;">TRIGGER</label>
+                <div class="form-group" style="text-align: left; margin-bottom: 8px;">
+                    <label class="form-label">Trigger Type</label>
+                    <select class="form-input" id="ruleTriggerType" onchange="updateTriggerFields()">
+                        <option value="keyword">Keyword Match</option>
+                        <option value="all">All Messages</option>
+                        <option value="regex">Regex Pattern</option>
+                    </select>
+                </div>
+                <div id="keywordFields" class="form-group" style="text-align: left;">
+                    <label class="form-label">Keywords (comma separated)</label>
+                    <input type="text" class="form-input" id="ruleKeywords" placeholder="halo, hi, hello, selamat">
+                    <div style="margin-top: 8px;">
+                        <label class="form-label">Match Type</label>
+                        <select class="form-input" id="ruleMatchType">
+                            <option value="contains">Contains</option>
+                            <option value="exact">Exact Match</option>
+                            <option value="startsWith">Starts With</option>
+                        </select>
+                    </div>
+                </div>
+                <div id="regexFields" class="form-group" style="text-align: left; display: none;">
+                    <label class="form-label">Regex Pattern</label>
+                    <input type="text" class="form-input" id="rulePattern" placeholder="^(halo|hi|hello).*">
+                </div>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Chat Type</label>
+                <select class="form-input" id="ruleChatType">
+                    <option value="all">All (Personal + Group)</option>
+                    <option value="personal">Personal Only</option>
+                    <option value="group">Group Only</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Reply Message *</label>
+                <textarea class="form-input" id="ruleReply" rows="3"
+                    placeholder="Halo {name}! Ada yang bisa dibantu?"></textarea>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                    Variables: {name} = Sender name, {time} = Current time, {date} = Current date
+                </p>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Reply Delay (ms)</label>
+                <input type="number" class="form-input" id="ruleDelay" value="1000" min="0" max="10000">
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="closeRuleModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="createRule()">Create Rule</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Create Broadcast Modal -->
+    <div class="modal-overlay" id="createBroadcastModal">
+        <div class="modal" style="max-width: 550px;">
+            <div class="modal-title">📢 Create Broadcast Campaign</div>
+            <div class="modal-subtitle">Send bulk messages to multiple recipients</div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Campaign Name *</label>
+                <input type="text" class="form-input" id="broadcastName" placeholder="e.g. New Year Promotion">
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Session *</label>
+                <select class="form-input" id="broadcastSession">
+                    <option value="">Select session...</option>
+                </select>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Recipients (one per line) *</label>
+                <textarea class="form-input" id="broadcastRecipients" rows="4" placeholder="628123456789
+628234567890
+628345678901"></textarea>
+                <p style="font-size: 11px; color: var(--text-muted); margin-top: 4px;">
+                    Enter phone numbers, one per line. Will be auto-formatted.
+                </p>
+            </div>
+
+            <div class="form-group" style="text-align: left;">
+                <label class="form-label">Message *</label>
+                <textarea class="form-input" id="broadcastMessage" rows="4"
+                    placeholder="Type your broadcast message..."></textarea>
+            </div>
+
+            <div style="display: flex; gap: 12px; justify-content: center; margin-top: 20px;">
+                <button class="btn btn-outline" onclick="closeBroadcastModal()">Cancel</button>
+                <button class="btn btn-primary" onclick="createBroadcast()">Create Campaign</button>
             </div>
         </div>
     </div>
@@ -1126,34 +1781,34 @@
                 window.location.href = '/';
                 return false;
             }
-            
+
             const password = prompt('🔑 Password:');
             if (password === null) {
                 alert('❌ Login required to access dashboard');
                 window.location.href = '/';
                 return false;
             }
-            
+
             try {
                 const response = await fetch('/api/dashboard/login', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password })
                 });
-                
+
                 const data = await response.json();
-                
+
                 if (data.success) {
                     sessionStorage.setItem('dashboard_auth', 'authenticated');
                     isAuthenticated = true;
-                    
+
                     // Ask for API key (optional)
                     const inputApiKey = prompt('🔑 API Key (optional - leave blank if not configured):');
                     if (inputApiKey && inputApiKey.trim()) {
                         apiKey = inputApiKey.trim();
                         sessionStorage.setItem('api_key', apiKey);
                     }
-                    
+
                     alert('✅ Login successful! Welcome to Chatery Dashboard.');
                     return true;
                 } else {
@@ -1183,12 +1838,12 @@
                 const loggedIn = await promptLogin();
                 if (!loggedIn) return;
             }
-            
+
             connectWebSocket();
             loadSessions();
             loadWsStats();
             updateRequestBody();
-            
+
             // Refresh stats every 30 seconds
             setInterval(() => {
                 loadSessions();
@@ -1203,7 +1858,7 @@
             socket.on('connect', () => {
                 updateWsStatus(true);
                 addEvent('connection', 'WebSocket connected');
-                
+
                 // Subscribe to all sessions
                 sessions.forEach(s => socket.emit('subscribe', s.sessionId));
             });
@@ -1242,6 +1897,20 @@
                 addEvent('error', `Session ${data.sessionId} logged out`);
                 loadSessions();
             });
+
+            // Broadcast real-time updates
+            socket.on('broadcast.update', (data) => {
+                console.log('📢 Broadcast update:', data);
+                // Refresh broadcasts list if on broadcast tab
+                const broadcastTab = document.getElementById('tab-broadcast');
+                if (broadcastTab && broadcastTab.classList.contains('active')) {
+                    loadBroadcasts();
+                }
+                // Show progress notification
+                if (data.status === 'completed') {
+                    showToast('success', `Broadcast "${data.name}" completed! Sent: ${data.stats.sent}`);
+                }
+            });
         }
 
         function updateWsStatus(connected) {
@@ -1261,13 +1930,13 @@
             try {
                 const response = await apiFetch(`${API_BASE}/sessions`);
                 const result = await response.json();
-                
+
                 if (result.success) {
                     sessions = result.data;
                     renderSessions();
                     updateStats();
                     updateQuickSendDropdown();
-                    
+
                     // Subscribe to all sessions
                     if (socket && socket.connected) {
                         sessions.forEach(s => socket.emit('subscribe', s.sessionId));
@@ -1280,7 +1949,7 @@
 
         function renderSessions() {
             const container = document.getElementById('sessionsList');
-            
+
             if (sessions.length === 0) {
                 container.innerHTML = `
                     <div class="empty-state">
@@ -1331,7 +2000,7 @@
         function updateStats() {
             const connected = sessions.filter(s => s.status === 'connected').length;
             const disconnected = sessions.filter(s => s.status !== 'connected').length;
-            
+
             document.getElementById('statSessions').textContent = sessions.length;
             document.getElementById('statConnected').textContent = connected;
             document.getElementById('statDisconnected').textContent = disconnected;
@@ -1352,7 +2021,7 @@
         function updateQuickSendDropdown() {
             const select = document.getElementById('quickSession');
             const connectedSessions = sessions.filter(s => s.status === 'connected');
-            
+
             select.innerHTML = '<option value="">Select session...</option>' +
                 connectedSessions.map(s => `<option value="${s.sessionId}">${s.name || s.sessionId}</option>`).join('');
         }
@@ -1374,7 +2043,7 @@
             const sessionId = document.getElementById('newSessionId').value.trim();
             const webhookUrl = document.getElementById('newSessionWebhook').value.trim();
             const metadataText = document.getElementById('newSessionMetadata').value.trim();
-            
+
             if (!sessionId) {
                 showToast('error', 'Please enter a session ID');
                 return;
@@ -1387,7 +2056,7 @@
 
             // Build request body
             const body = {};
-            
+
             // Parse metadata if provided
             if (metadataText) {
                 try {
@@ -1397,7 +2066,7 @@
                     return;
                 }
             }
-            
+
             // Add webhook if provided
             if (webhookUrl) {
                 try {
@@ -1419,14 +2088,14 @@
                 if (result.success) {
                     closeCreateSessionModal();
                     showToast('success', 'Session created! Scan QR code to connect.');
-                    
+
                     // Subscribe to this session
                     if (socket && socket.connected) {
                         socket.emit('subscribe', sessionId);
                     }
-                    
+
                     loadSessions();
-                    
+
                     // Show QR modal after a short delay
                     setTimeout(() => showQrForSession(sessionId), 1000);
                 } else {
@@ -1543,23 +2212,23 @@
             const sessionIdGroup = document.getElementById('sessionIdGroup');
             const bodyTextarea = document.getElementById('apiBody');
             const apiHelp = document.getElementById('apiHelp');
-            
+
             // Show/hide session ID input for URL params
             if (path.includes('{sessionId}')) {
                 sessionIdGroup.style.display = 'block';
             } else {
                 sessionIdGroup.style.display = 'none';
             }
-            
+
             let body = {};
             let showBody = true;
             let helpText = '';
-            
+
             // Sessions
             if (path.includes('/sessions') && method === 'GET') {
                 showBody = false;
             } else if (path.includes('/sessions') && path.includes('/webhooks') && method === 'POST') {
-                body = { 
+                body = {
                     url: 'https://your-server.com/webhook',
                     events: ['message', 'message_ack', 'presence']
                 };
@@ -1568,12 +2237,12 @@
                     <code>events</code>: (optional) Array of events to receive. Available events:<br>
                     <code>qr</code>, <code>ready</code>, <code>authenticated</code>, <code>disconnected</code>, <code>message</code>, <code>message_ack</code>, <code>message_revoke</code>, <code>presence</code>, <code>group_update</code>, <code>group_participants</code>`;
             } else if (path.includes('/sessions') && path.includes('/webhooks') && method === 'DELETE') {
-                body = { 
+                body = {
                     url: 'https://your-server.com/webhook'
                 };
                 helpText = '🗑️ Remove a webhook by its URL.';
             } else if (path.includes('/sessions') && path.includes('/config') && method === 'PATCH') {
-                body = { 
+                body = {
                     metadata: {
                         appName: 'My App',
                         userId: 'user123'
@@ -1594,36 +2263,36 @@
             }
             // Messaging
             else if (path.includes('/chats/send-text')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
                     message: 'Hello from Chatery API!',
                     typingTime: 0
                 };
                 helpText = '📝 <code>chatId</code>: Phone number or group ID. <code>typingTime</code>: Typing duration in ms before sending (0 = no typing).';
             } else if (path.includes('/chats/send-image')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
-                    imageUrl: 'https://example.com/image.jpg', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
+                    imageUrl: 'https://example.com/image.jpg',
                     caption: 'Image caption',
                     typingTime: 0
                 };
                 helpText = '🖼️ <code>imageUrl</code>: Direct URL to image. <code>typingTime</code>: Typing duration in ms.';
             } else if (path.includes('/chats/send-document')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
-                    documentUrl: 'https://example.com/document.pdf', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
+                    documentUrl: 'https://example.com/document.pdf',
                     filename: 'document.pdf',
                     mimetype: 'application/pdf',
                     typingTime: 0
                 };
                 helpText = '📄 <code>mimetype</code>: MIME type. <code>typingTime</code>: Typing duration in ms.';
             } else if (path.includes('/chats/send-location')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
                     latitude: -6.2088,
                     longitude: 106.8456,
                     name: 'Jakarta, Indonesia',
@@ -1631,18 +2300,18 @@
                 };
                 helpText = '📍 GPS coordinates. <code>typingTime</code>: Typing duration in ms.';
             } else if (path.includes('/chats/send-contact')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
                     contactName: 'John Doe',
                     contactPhone: '628987654321',
                     typingTime: 0
                 };
                 helpText = '👤 <code>contactPhone</code>: Contact phone number. <code>typingTime</code>: Typing duration in ms.';
             } else if (path.includes('/chats/send-button')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789',
                     text: 'Please choose an option:',
                     footer: 'Powered by Chatery',
                     buttons: ['Option 1', 'Option 2', 'Option 3'],
@@ -1650,59 +2319,59 @@
                 };
                 helpText = '🔘 <code>buttons</code>: Max 3 buttons. <code>typingTime</code>: Typing duration in ms.';
             } else if (path.includes('/chats/presence')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     chatId: '628123456789',
                     presence: 'composing'
                 };
                 helpText = '✍️ <code>presence</code>: <code>composing</code> (typing), <code>recording</code> (recording audio), <code>paused</code>, <code>available</code>, <code>unavailable</code>';
             } else if (path.includes('/chats/check-number')) {
-                body = { 
-                    sessionId: '', 
-                    phone: '628123456789' 
+                body = {
+                    sessionId: '',
+                    phone: '628123456789'
                 };
                 helpText = '✅ Check if a phone number is registered on WhatsApp.';
             } else if (path.includes('/chats/profile-picture')) {
-                body = { 
-                    sessionId: '', 
-                    phone: '628123456789' 
+                body = {
+                    sessionId: '',
+                    phone: '628123456789'
                 };
                 helpText = '🖼️ Get the profile picture URL of a WhatsApp user.';
             }
             // Chat History
             else if (path.includes('/chats/overview')) {
-                body = { 
-                    sessionId: '', 
-                    limit: 50, 
-                    offset: 0, 
-                    type: 'all' 
+                body = {
+                    sessionId: '',
+                    limit: 50,
+                    offset: 0,
+                    type: 'all'
                 };
                 helpText = '💬 <code>type</code>: Filter by <code>all</code>, <code>personal</code>, or <code>group</code>';
             } else if (path.includes('/contacts')) {
-                body = { 
-                    sessionId: '', 
-                    limit: 100, 
-                    offset: 0, 
-                    search: '' 
+                body = {
+                    sessionId: '',
+                    limit: 100,
+                    offset: 0,
+                    search: ''
                 };
                 helpText = '👥 <code>search</code>: Filter contacts by name or number';
             } else if (path.includes('/chats/messages')) {
-                body = { 
-                    sessionId: '', 
-                    chatId: '628123456789@s.whatsapp.net', 
+                body = {
+                    sessionId: '',
+                    chatId: '628123456789@s.whatsapp.net',
                     limit: 50,
                     cursor: null
                 };
                 helpText = '📜 <code>chatId</code>: Use @s.whatsapp.net for personal chats, @g.us for groups. <code>cursor</code>: Message ID for pagination.';
             } else if (path.includes('/chats/info')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     chatId: '628123456789@s.whatsapp.net'
                 };
                 helpText = 'ℹ️ Get detailed information about a chat or group.';
             } else if (path.includes('/chats/mark-read')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     chatId: '628123456789',
                     messageId: null
                 };
@@ -1710,61 +2379,61 @@
             }
             // Groups - Basic
             else if (path === 'POST|/api/whatsapp/groups' || path.endsWith('/groups')) {
-                body = { 
-                    sessionId: '' 
+                body = {
+                    sessionId: ''
                 };
                 helpText = '👥 Get all groups you are participating in.';
             } else if (path.includes('/groups/create')) {
-                body = { 
-                    sessionId: '', 
-                    name: 'My New Group', 
-                    participants: ['628123456789', '628987654321'] 
+                body = {
+                    sessionId: '',
+                    name: 'My New Group',
+                    participants: ['628123456789', '628987654321']
                 };
                 helpText = '➕ <code>participants</code>: Array of phone numbers to add to the new group.';
             } else if (path.includes('/groups/metadata')) {
-                body = { 
-                    sessionId: '', 
-                    groupId: '123456789@g.us' 
+                body = {
+                    sessionId: '',
+                    groupId: '123456789@g.us'
                 };
                 helpText = 'ℹ️ Get detailed group info including participants, admins, and settings.';
             } else if (path.includes('/groups/leave')) {
-                body = { 
-                    sessionId: '', 
-                    groupId: '123456789@g.us' 
+                body = {
+                    sessionId: '',
+                    groupId: '123456789@g.us'
                 };
                 helpText = '🚪 Leave a group. You will need to be re-added by an admin to rejoin.';
             } else if (path.includes('/groups/join')) {
-                body = { 
-                    sessionId: '', 
-                    inviteCode: 'https://chat.whatsapp.com/AbCdEfGhIjK' 
+                body = {
+                    sessionId: '',
+                    inviteCode: 'https://chat.whatsapp.com/AbCdEfGhIjK'
                 };
                 helpText = '🔗 <code>inviteCode</code>: Can be full URL or just the code part.';
             }
             // Groups - Participants
             else if (path.includes('/groups/participants/add')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     participants: ['628123456789', '628987654321']
                 };
                 helpText = '➕ Add new members to the group. You must be an admin.';
             } else if (path.includes('/groups/participants/remove')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     participants: ['628123456789']
                 };
                 helpText = '➖ Remove members from the group. You must be an admin.';
             } else if (path.includes('/groups/participants/promote')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     participants: ['628123456789']
                 };
                 helpText = '⬆️ Promote members to admin. You must be an admin.';
             } else if (path.includes('/groups/participants/demote')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     participants: ['628123456789']
                 };
@@ -1772,22 +2441,22 @@
             }
             // Groups - Settings
             else if (path.includes('/groups/subject')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     subject: 'New Group Name'
                 };
                 helpText = '✏️ Update the group name/subject. Max 25 characters.';
             } else if (path.includes('/groups/description')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     description: 'This is the group description'
                 };
                 helpText = '📝 Update group description. Can be empty to remove.';
             } else if (path.includes('/groups/settings')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     setting: 'announcement'
                 };
@@ -1797,21 +2466,21 @@
                     • <code>locked</code> - Only admins can edit group info<br>
                     • <code>unlocked</code> - All members can edit group info`;
             } else if (path.includes('/groups/picture')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us',
                     imageUrl: 'https://example.com/group-pic.jpg'
                 };
                 helpText = '🖼️ Update group profile picture. Image should be square.';
             } else if (path.includes('/groups/invite-code')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us'
                 };
                 helpText = '🔗 Get the current invite link for the group.';
             } else if (path.includes('/groups/revoke-invite')) {
-                body = { 
-                    sessionId: '', 
+                body = {
+                    sessionId: '',
                     groupId: '123456789@g.us'
                 };
                 helpText = '🔄 Revoke current invite link and generate a new one.';
@@ -1872,9 +2541,9 @@
 
                 const response = await fetch(path, options);
                 const result = await response.json();
-                
+
                 responseBox.textContent = JSON.stringify(result, null, 2);
-                
+
                 if (result.success) {
                     showToast('success', 'Request successful');
                 } else {
@@ -1893,7 +2562,7 @@
         function addEvent(type, content) {
             const log = document.getElementById('eventsLog');
             const time = new Date().toLocaleTimeString();
-            
+
             // Remove empty state if exists
             const emptyState = log.querySelector('.empty-state');
             if (emptyState) {
@@ -1930,7 +2599,7 @@
         function showToast(type, message) {
             const container = document.getElementById('toastContainer');
             const id = Date.now();
-            
+
             const icons = {
                 success: '✅',
                 error: '❌',
@@ -1972,11 +2641,11 @@
         async function loadWebhooks(sessionId) {
             const container = document.getElementById('webhooksList');
             container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 16px;"><div class="spinner"></div></div>';
-            
+
             try {
                 const session = sessions.find(s => s.sessionId === sessionId);
                 const webhooks = session?.webhooks || [];
-                
+
                 if (webhooks.length === 0) {
                     container.innerHTML = '<div style="text-align: center; color: var(--text-muted); padding: 16px;">No webhooks configured</div>';
                     return;
@@ -2003,7 +2672,7 @@
 
         async function addWebhook() {
             const url = document.getElementById('newWebhookUrl').value.trim();
-            
+
             if (!url) {
                 showToast('error', 'Please enter a webhook URL');
                 return;
@@ -2033,13 +2702,13 @@
                     showToast('success', 'Webhook added successfully');
                     document.getElementById('newWebhookUrl').value = '';
                     document.querySelectorAll('.webhook-event').forEach(cb => cb.checked = false);
-                    
+
                     // Update local session data
                     const session = sessions.find(s => s.sessionId === currentWebhookSessionId);
                     if (session) {
                         session.webhooks = result.data?.webhooks || [];
                     }
-                    
+
                     loadWebhooks(currentWebhookSessionId);
                     renderSessions();
                 } else {
@@ -2066,13 +2735,13 @@
 
                 if (result.success) {
                     showToast('success', 'Webhook removed successfully');
-                    
+
                     // Update local session data
                     const session = sessions.find(s => s.sessionId === currentWebhookSessionId);
                     if (session) {
                         session.webhooks = result.data?.webhooks || [];
                     }
-                    
+
                     loadWebhooks(currentWebhookSessionId);
                     renderSessions();
                 } else {
@@ -2084,12 +2753,835 @@
             }
         }
 
+        // ==================== SCHEDULER ====================
+        let schedules = [];
+
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.main-tabs .tab').forEach(tab => {
+                tab.classList.remove('active');
+                if (tab.dataset.tab === tabName) {
+                    tab.classList.add('active');
+                }
+            });
+
+            // Update tab content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.remove('active');
+            });
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // Load data for the tab
+            if (tabName === 'scheduler') {
+                loadSchedules();
+            } else if (tabName === 'autoreply') {
+                loadRules();
+            } else if (tabName === 'broadcast') {
+                loadBroadcasts();
+            } else if (tabName === 'ai') {
+                loadAIConfigs();
+            }
+        }
+
+        async function loadSchedules() {
+            try {
+                const response = await apiFetch(`${API_BASE}/schedules`);
+                const result = await response.json();
+
+                if (result.success) {
+                    schedules = result.data.schedules || [];
+                    renderSchedules();
+                }
+            } catch (error) {
+                console.error('Error loading schedules:', error);
+            }
+        }
+
+        function renderSchedules() {
+            const container = document.getElementById('schedulesList');
+
+            if (schedules.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">⏰</div>
+                        <p>No scheduled messages</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Create a schedule to send messages automatically</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = schedules.map(schedule => {
+                const scheduledDate = new Date(schedule.scheduledAt);
+                const statusClass = !schedule.enabled ? 'disabled' : (schedule.status === 'completed' ? 'completed' : 'pending');
+                const statusText = !schedule.enabled ? 'Disabled' : (schedule.status === 'completed' ? 'Completed' : 'Pending');
+                const repeatLabels = { once: 'Once', daily: 'Daily', weekly: 'Weekly', monthly: 'Monthly' };
+
+                return `
+                    <div class="schedule-item">
+                        <div class="schedule-header">
+                            <div class="schedule-title">
+                                ${schedule.repeat !== 'once' ? '🔁' : '📅'} ${schedule.name}
+                                ${schedule.repeat !== 'once' ? `<span class="repeat-badge">${repeatLabels[schedule.repeat]}</span>` : ''}
+                            </div>
+                            <span class="schedule-status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="schedule-details">
+                            <span>📱 ${schedule.sessionId}</span>
+                            <span>👤 ${schedule.chatId}</span>
+                            <span>📆 ${scheduledDate.toLocaleDateString('id-ID')}</span>
+                            <span>⏰ ${scheduledDate.toLocaleTimeString('id-ID', { hour: '2-digit', minute: '2-digit' })}</span>
+                        </div>
+                        <div class="schedule-message">${schedule.message}</div>
+                        <div class="schedule-actions">
+                            <button class="btn btn-outline btn-sm" onclick="toggleSchedule('${schedule.id}')">
+                                ${schedule.enabled ? '⏸️ Disable' : '▶️ Enable'}
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteSchedule('${schedule.id}')">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showCreateSchedule() {
+            // Populate session dropdown
+            const sessionSelect = document.getElementById('scheduleSession');
+            sessionSelect.innerHTML = '<option value="">Select session...</option>';
+            sessions.filter(s => s.isConnected).forEach(s => {
+                sessionSelect.innerHTML += `<option value="${s.sessionId}">${s.sessionId} (${s.name || s.phoneNumber || 'Unknown'})</option>`;
+            });
+
+            // Set default date/time to now + 5 minutes
+            const now = new Date();
+            now.setMinutes(now.getMinutes() + 5);
+            document.getElementById('scheduleDate').value = now.toISOString().split('T')[0];
+            document.getElementById('scheduleTime').value = now.toTimeString().slice(0, 5);
+
+            document.getElementById('createScheduleModal').classList.add('active');
+        }
+
+        function closeScheduleModal() {
+            document.getElementById('createScheduleModal').classList.remove('active');
+            // Clear form
+            document.getElementById('scheduleName').value = '';
+            document.getElementById('scheduleSession').value = '';
+            document.getElementById('scheduleChatId').value = '';
+            document.getElementById('scheduleMessage').value = '';
+            document.getElementById('scheduleRepeat').value = 'once';
+        }
+
+        async function createSchedule() {
+            const sessionId = document.getElementById('scheduleSession').value;
+            const chatId = document.getElementById('scheduleChatId').value.trim();
+            const message = document.getElementById('scheduleMessage').value.trim();
+            const date = document.getElementById('scheduleDate').value;
+            const time = document.getElementById('scheduleTime').value;
+            const repeat = document.getElementById('scheduleRepeat').value;
+            const name = document.getElementById('scheduleName').value.trim();
+
+            if (!sessionId || !chatId || !message || !date || !time) {
+                showToast('error', 'Please fill in all required fields');
+                return;
+            }
+
+            const scheduledAt = new Date(`${date}T${time}`).toISOString();
+
+            try {
+                const response = await apiFetch(`${API_BASE}/schedules`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        sessionId,
+                        chatId,
+                        message,
+                        scheduledAt,
+                        repeat,
+                        name: name || undefined
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', 'Schedule created successfully');
+                    closeScheduleModal();
+                    loadSchedules();
+                } else {
+                    showToast('error', result.message || 'Failed to create schedule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to create schedule');
+                console.error('Error creating schedule:', error);
+            }
+        }
+
+        async function toggleSchedule(id) {
+            try {
+                const response = await apiFetch(`${API_BASE}/schedules/${id}/toggle`, {
+                    method: 'POST'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', result.message);
+                    loadSchedules();
+                } else {
+                    showToast('error', result.message || 'Failed to toggle schedule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to toggle schedule');
+                console.error('Error toggling schedule:', error);
+            }
+        }
+
+        async function deleteSchedule(id) {
+            if (!confirm('Are you sure you want to delete this scheduled message?')) {
+                return;
+            }
+
+            try {
+                const response = await apiFetch(`${API_BASE}/schedules/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', 'Schedule deleted');
+                    loadSchedules();
+                } else {
+                    showToast('error', result.message || 'Failed to delete schedule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to delete schedule');
+                console.error('Error deleting schedule:', error);
+            }
+        }
+
+        // ==================== AUTO-REPLY ====================
+        let rules = [];
+
+        async function loadRules() {
+            try {
+                const response = await apiFetch(`${API_BASE}/rules`);
+                const result = await response.json();
+
+                if (result.success) {
+                    rules = result.data.rules || [];
+                    renderRules();
+                }
+            } catch (error) {
+                console.error('Error loading rules:', error);
+            }
+        }
+
+        function renderRules() {
+            const container = document.getElementById('rulesList');
+
+            if (rules.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🤖</div>
+                        <p>No auto-reply rules</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Create rules to automatically respond to messages</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = rules.map(rule => {
+                const statusClass = rule.enabled ? 'pending' : 'disabled';
+                const statusText = rule.enabled ? 'Active' : 'Disabled';
+                const triggerTypes = { keyword: 'Keyword', all: 'All Messages', regex: 'Regex' };
+                const chatTypes = { all: 'All Chats', personal: 'Personal', group: 'Group' };
+
+                let triggerDetails = '';
+                if (rule.trigger.type === 'keyword' && rule.trigger.keywords?.length > 0) {
+                    triggerDetails = rule.trigger.keywords.map(k => `<span class="keyword-tag">${k}</span>`).join('');
+                } else if (rule.trigger.type === 'regex') {
+                    triggerDetails = `<code>${rule.trigger.pattern}</code>`;
+                } else {
+                    triggerDetails = 'All incoming messages';
+                }
+
+                return `
+                    <div class="rule-item">
+                        <div class="rule-header">
+                            <div class="rule-title">
+                                ${rule.enabled ? '✅' : '⏸️'} ${rule.name}
+                                <span class="match-count">(${rule.matchCount || 0} matches)</span>
+                            </div>
+                            <span class="schedule-status ${statusClass}">${statusText}</span>
+                        </div>
+                        <div class="rule-trigger">
+                            <div class="rule-trigger-type">${triggerTypes[rule.trigger.type]} (${rule.trigger.matchType || 'contains'})</div>
+                            ${triggerDetails}
+                        </div>
+                        <div class="rule-reply">💬 ${rule.action.message}</div>
+                        <div class="rule-conditions">
+                            <span class="rule-condition-badge">📱 ${chatTypes[rule.conditions.chatType]}</span>
+                            <span class="rule-condition-badge">⏱️ ${rule.action.delay}ms delay</span>
+                            ${rule.sessionId !== '*' ? `<span class="rule-condition-badge">🔗 ${rule.sessionId}</span>` : ''}
+                        </div>
+                        <div class="schedule-actions">
+                            <button class="btn btn-outline btn-sm" onclick="toggleRule('${rule.id}')">
+                                ${rule.enabled ? '⏸️ Disable' : '▶️ Enable'}
+                            </button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteRule('${rule.id}')">
+                                🗑️ Delete
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function updateTriggerFields() {
+            const triggerType = document.getElementById('ruleTriggerType').value;
+            document.getElementById('keywordFields').style.display = triggerType === 'keyword' ? 'block' : 'none';
+            document.getElementById('regexFields').style.display = triggerType === 'regex' ? 'block' : 'none';
+        }
+
+        function showCreateRule() {
+            // Populate session dropdown
+            const sessionSelect = document.getElementById('ruleSession');
+            sessionSelect.innerHTML = '<option value="*">All Sessions</option>';
+            sessions.forEach(s => {
+                sessionSelect.innerHTML += `<option value="${s.sessionId}">${s.sessionId}</option>`;
+            });
+
+            document.getElementById('createRuleModal').classList.add('active');
+        }
+
+        function closeRuleModal() {
+            document.getElementById('createRuleModal').classList.remove('active');
+            // Clear form
+            document.getElementById('ruleName').value = '';
+            document.getElementById('ruleSession').value = '*';
+            document.getElementById('ruleTriggerType').value = 'keyword';
+            document.getElementById('ruleKeywords').value = '';
+            document.getElementById('ruleMatchType').value = 'contains';
+            document.getElementById('rulePattern').value = '';
+            document.getElementById('ruleChatType').value = 'all';
+            document.getElementById('ruleReply').value = '';
+            document.getElementById('ruleDelay').value = '1000';
+            updateTriggerFields();
+        }
+
+        async function createRule() {
+            const name = document.getElementById('ruleName').value.trim();
+            const sessionId = document.getElementById('ruleSession').value;
+            const triggerType = document.getElementById('ruleTriggerType').value;
+            const keywords = document.getElementById('ruleKeywords').value.split(',').map(k => k.trim()).filter(k => k);
+            const matchType = document.getElementById('ruleMatchType').value;
+            const pattern = document.getElementById('rulePattern').value.trim();
+            const chatType = document.getElementById('ruleChatType').value;
+            const replyMessage = document.getElementById('ruleReply').value.trim();
+            const delay = parseInt(document.getElementById('ruleDelay').value) || 1000;
+
+            if (!name || !replyMessage) {
+                showToast('error', 'Please fill in name and reply message');
+                return;
+            }
+
+            if (triggerType === 'keyword' && keywords.length === 0) {
+                showToast('error', 'Please enter at least one keyword');
+                return;
+            }
+
+            try {
+                const response = await apiFetch(`${API_BASE}/rules`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        name,
+                        sessionId,
+                        trigger: {
+                            type: triggerType,
+                            keywords: triggerType === 'keyword' ? keywords : [],
+                            matchType,
+                            pattern: triggerType === 'regex' ? pattern : ''
+                        },
+                        conditions: {
+                            chatType
+                        },
+                        action: {
+                            type: 'reply',
+                            message: replyMessage,
+                            delay
+                        }
+                    })
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', 'Rule created successfully');
+                    closeRuleModal();
+                    loadRules();
+                } else {
+                    showToast('error', result.message || 'Failed to create rule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to create rule');
+                console.error('Error creating rule:', error);
+            }
+        }
+
+        async function toggleRule(id) {
+            try {
+                const response = await apiFetch(`${API_BASE}/rules/${id}/toggle`, {
+                    method: 'POST'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', result.message);
+                    loadRules();
+                } else {
+                    showToast('error', result.message || 'Failed to toggle rule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to toggle rule');
+                console.error('Error toggling rule:', error);
+            }
+        }
+
+        async function deleteRule(id) {
+            if (!confirm('Are you sure you want to delete this rule?')) {
+                return;
+            }
+
+            try {
+                const response = await apiFetch(`${API_BASE}/rules/${id}`, {
+                    method: 'DELETE'
+                });
+
+                const result = await response.json();
+
+                if (result.success) {
+                    showToast('success', 'Rule deleted');
+                    loadRules();
+                } else {
+                    showToast('error', result.message || 'Failed to delete rule');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to delete rule');
+                console.error('Error deleting rule:', error);
+            }
+        }
+
+        // ==================== BROADCAST ====================
+        let broadcasts = [];
+
+        async function loadBroadcasts() {
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts`);
+                const result = await response.json();
+
+                if (result.success) {
+                    broadcasts = result.data.broadcasts || [];
+                    renderBroadcasts();
+                }
+            } catch (error) {
+                console.error('Error loading broadcasts:', error);
+            }
+        }
+
+        function renderBroadcasts() {
+            const container = document.getElementById('broadcastsList');
+
+            if (broadcasts.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">📢</div>
+                        <p>No broadcast campaigns</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Create a campaign to send bulk messages</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const statusColors = {
+                created: 'disabled',
+                running: 'pending',
+                paused: 'disabled',
+                completed: 'completed',
+                cancelled: 'disabled'
+            };
+
+            container.innerHTML = broadcasts.map(bc => {
+                const progress = Math.round((bc.stats.sent + bc.stats.failed) / bc.stats.total * 100);
+                return `
+                    <div class="schedule-item">
+                        <div class="schedule-header">
+                            <div class="schedule-title">📢 ${bc.name}</div>
+                            <span class="schedule-status ${statusColors[bc.status]}">${bc.status.toUpperCase()}</span>
+                        </div>
+                        <div class="schedule-details">
+                            <span>📱 ${bc.sessionId}</span>
+                            <span>👥 ${bc.stats.total} recipients</span>
+                            <span>✅ ${bc.stats.sent} sent</span>
+                            <span>❌ ${bc.stats.failed} failed</span>
+                        </div>
+                        <div style="background: var(--bg-card); border-radius: 8px; padding: 8px 12px; margin: 12px 0;">
+                            <div style="display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 4px;">
+                                <span>Progress</span>
+                                <span>${progress}%</span>
+                            </div>
+                            <div style="background: var(--border); border-radius: 4px; height: 6px; overflow: hidden;">
+                                <div style="background: var(--primary); height: 100%; width: ${progress}%;"></div>
+                            </div>
+                        </div>
+                        <div class="schedule-message">${bc.message.substring(0, 100)}${bc.message.length > 100 ? '...' : ''}</div>
+                        <div class="schedule-actions">
+                            ${bc.status === 'created' || bc.status === 'paused' ?
+                        `<button class="btn btn-primary btn-sm" onclick="startBroadcast('${bc.id}')">▶️ Start</button>` : ''}
+                            ${bc.status === 'running' ?
+                        `<button class="btn btn-outline btn-sm" onclick="pauseBroadcast('${bc.id}')">⏸️ Pause</button>` : ''}
+                            ${bc.status !== 'completed' && bc.status !== 'cancelled' ?
+                        `<button class="btn btn-outline btn-sm" onclick="cancelBroadcast('${bc.id}')">🛑 Cancel</button>` : ''}
+                            ${bc.status !== 'running' ?
+                        `<button class="btn btn-danger btn-sm" onclick="deleteBroadcast('${bc.id}')">🗑️</button>` : ''}
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function showCreateBroadcast() {
+            const sessionSelect = document.getElementById('broadcastSession');
+            sessionSelect.innerHTML = '<option value="">Select session...</option>';
+            sessions.filter(s => s.isConnected).forEach(s => {
+                sessionSelect.innerHTML += `<option value="${s.sessionId}">${s.sessionId}</option>`;
+            });
+            document.getElementById('createBroadcastModal').classList.add('active');
+        }
+
+        function closeBroadcastModal() {
+            document.getElementById('createBroadcastModal').classList.remove('active');
+            document.getElementById('broadcastName').value = '';
+            document.getElementById('broadcastSession').value = '';
+            document.getElementById('broadcastRecipients').value = '';
+            document.getElementById('broadcastMessage').value = '';
+        }
+
+        async function createBroadcast() {
+            const name = document.getElementById('broadcastName').value.trim();
+            const sessionId = document.getElementById('broadcastSession').value;
+            const recipientsRaw = document.getElementById('broadcastRecipients').value.trim();
+            const message = document.getElementById('broadcastMessage').value.trim();
+
+            if (!name || !sessionId || !recipientsRaw || !message) {
+                showToast('error', 'Please fill in all required fields');
+                return;
+            }
+
+            const recipients = recipientsRaw.split('\n').map(r => r.trim()).filter(r => r);
+            if (recipients.length === 0) {
+                showToast('error', 'Please enter at least one recipient');
+                return;
+            }
+
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts`, {
+                    method: 'POST',
+                    body: JSON.stringify({ name, sessionId, recipients, message })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', `Campaign created with ${recipients.length} recipients`);
+                    closeBroadcastModal();
+                    loadBroadcasts();
+                } else {
+                    showToast('error', result.message || 'Failed to create broadcast');
+                }
+            } catch (error) {
+                showToast('error', 'Failed to create broadcast');
+            }
+        }
+
+        async function startBroadcast(id) {
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts/${id}/start`, { method: 'POST' });
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', 'Broadcast started');
+                    loadBroadcasts();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to start broadcast');
+            }
+        }
+
+        async function pauseBroadcast(id) {
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts/${id}/pause`, { method: 'POST' });
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', 'Broadcast paused');
+                    loadBroadcasts();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to pause broadcast');
+            }
+        }
+
+        async function cancelBroadcast(id) {
+            if (!confirm('Are you sure you want to cancel this broadcast?')) return;
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts/${id}/cancel`, { method: 'POST' });
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', 'Broadcast cancelled');
+                    loadBroadcasts();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to cancel broadcast');
+            }
+        }
+
+        async function deleteBroadcast(id) {
+            if (!confirm('Are you sure you want to delete this broadcast?')) return;
+            try {
+                const response = await apiFetch(`${API_BASE}/broadcasts/${id}`, { method: 'DELETE' });
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', 'Broadcast deleted');
+                    loadBroadcasts();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to delete broadcast');
+            }
+        }
+
+        // ==================== AI CHATBOT ====================
+        let aiConfigs = {};
+
+        async function loadAIConfigs() {
+            try {
+                // Populate session dropdown
+                const sessionSelect = document.getElementById('aiSession');
+                sessionSelect.innerHTML = '<option value="">Select session...</option>';
+                sessions.forEach(s => {
+                    sessionSelect.innerHTML += `<option value="${s.sessionId}">${s.sessionId}</option>`;
+                });
+
+                // Load all configs
+                const response = await apiFetch(`${API_BASE}/ai/configs`);
+                const result = await response.json();
+
+                if (result.success) {
+                    aiConfigs = result.data || {};
+                    renderAIConfigs();
+                }
+            } catch (error) {
+                console.error('Error loading AI configs:', error);
+            }
+        }
+
+        function renderAIConfigs() {
+            const container = document.getElementById('aiConfigList');
+            const configuredSessions = Object.entries(aiConfigs).filter(([_, cfg]) => cfg.hasApiKey);
+
+            if (configuredSessions.length === 0) {
+                container.innerHTML = `
+                    <div class="empty-state">
+                        <div class="empty-state-icon">🧠</div>
+                        <p>No sessions configured for AI</p>
+                        <p style="font-size: 13px; margin-top: 8px;">Select a session below to enable AI chatbot</p>
+                    </div>
+                `;
+                return;
+            }
+
+            container.innerHTML = configuredSessions.map(([sessionId, cfg]) => `
+                <div class="schedule-item">
+                    <div class="schedule-header">
+                        <div class="schedule-title">🧠 ${sessionId}</div>
+                        <span class="schedule-status ${cfg.enabled ? 'pending' : 'disabled'}">${cfg.enabled ? 'ACTIVE' : 'DISABLED'}</span>
+                    </div>
+                    <div class="schedule-details">
+                        <span>🤖 ${cfg.provider === 'gemini' ? 'Google Gemini' : cfg.provider === 'rag' ? 'Knowledge Base (RAG)' : 'OpenAI GPT'}</span>
+                        <span>🎯 ${cfg.triggerMode === 'all' ? 'All Messages' : cfg.triggerMode === 'keyword' ? 'Keywords' : 'Mentions'}</span>
+                        <span>🔑 API Key: ✓</span>
+                    </div>
+                    <div class="schedule-message">${cfg.systemPrompt?.substring(0, 80) || 'No system prompt'}...</div>
+                </div>
+            `).join('');
+        }
+
+        async function loadAIConfig() {
+            const sessionId = document.getElementById('aiSession').value;
+            if (!sessionId) return;
+
+            try {
+                const response = await apiFetch(`${API_BASE}/ai/config/${sessionId}`);
+                const result = await response.json();
+
+                if (result.success) {
+                    const cfg = result.data;
+                    document.getElementById('aiProvider').value = cfg.provider || 'openai';
+                    document.getElementById('aiSystemPrompt').value = cfg.systemPrompt || '';
+                    document.getElementById('aiTriggerMode').value = cfg.triggerMode || 'all';
+                    document.getElementById('aiRagUrl').value = cfg.ragApiUrl || 'http://localhost:3001/api';
+                    // Don't set API key (it's not returned for security)
+                    document.getElementById('aiApiKey').value = '';
+                    document.getElementById('aiApiKey').placeholder = cfg.hasApiKey ? '••••••••••• (already set)' : 'sk-... or AIza...';
+                    // Toggle RAG fields
+                    toggleRagFields();
+                }
+            } catch (error) {
+                console.error('Error loading AI config:', error);
+            }
+        }
+
+        function toggleRagFields() {
+            const provider = document.getElementById('aiProvider').value;
+            const apiKeyGroup = document.getElementById('apiKeyGroup');
+            const ragUrlGroup = document.getElementById('ragUrlGroup');
+
+            if (provider === 'rag') {
+                apiKeyGroup.style.display = 'none';
+                ragUrlGroup.style.display = 'block';
+            } else {
+                apiKeyGroup.style.display = 'block';
+                ragUrlGroup.style.display = 'none';
+            }
+        }
+
+        async function enableAI() {
+            const sessionId = document.getElementById('aiSession').value;
+            const provider = document.getElementById('aiProvider').value;
+            const apiKey = document.getElementById('aiApiKey').value.trim();
+            const ragApiUrl = document.getElementById('aiRagUrl').value.trim();
+
+            if (!sessionId) {
+                showToast('error', 'Please select a session');
+                return;
+            }
+
+            // For RAG mode, no API key needed but ragApiUrl is required
+            if (provider === 'rag') {
+                if (!ragApiUrl) {
+                    showToast('error', 'Please enter RAG API URL');
+                    return;
+                }
+            } else {
+                if (!apiKey) {
+                    showToast('error', 'Please enter an API key');
+                    return;
+                }
+            }
+
+            try {
+                // For RAG, use a dummy API key and set ragApiUrl
+                const body = {
+                    apiKey: provider === 'rag' ? 'rag-mode' : apiKey,
+                    provider
+                };
+
+                const response = await apiFetch(`${API_BASE}/ai/enable/${sessionId}`, {
+                    method: 'POST',
+                    body: JSON.stringify(body)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    // If RAG, also update ragApiUrl
+                    if (provider === 'rag') {
+                        await apiFetch(`${API_BASE}/ai/config/${sessionId}`, {
+                            method: 'PATCH',
+                            body: JSON.stringify({ ragApiUrl, ragEnabled: true })
+                        });
+                    }
+                    showToast('success', `AI enabled for ${sessionId}`);
+                    loadAIConfigs();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to enable AI');
+            }
+        }
+
+        async function disableAI() {
+            const sessionId = document.getElementById('aiSession').value;
+            if (!sessionId) {
+                showToast('error', 'Please select a session');
+                return;
+            }
+
+            try {
+                const response = await apiFetch(`${API_BASE}/ai/disable/${sessionId}`, {
+                    method: 'POST'
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', `AI disabled for ${sessionId}`);
+                    loadAIConfigs();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to disable AI');
+            }
+        }
+
+        async function saveAIConfig() {
+            const sessionId = document.getElementById('aiSession').value;
+            if (!sessionId) {
+                showToast('error', 'Please select a session');
+                return;
+            }
+
+            const updates = {
+                provider: document.getElementById('aiProvider').value,
+                systemPrompt: document.getElementById('aiSystemPrompt').value,
+                triggerMode: document.getElementById('aiTriggerMode').value,
+                ragApiUrl: document.getElementById('aiRagUrl').value
+            };
+
+            try {
+                const response = await apiFetch(`${API_BASE}/ai/config/${sessionId}`, {
+                    method: 'PATCH',
+                    body: JSON.stringify(updates)
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    showToast('success', 'AI config saved');
+                    loadAIConfigs();
+                } else {
+                    showToast('error', result.message);
+                }
+            } catch (error) {
+                showToast('error', 'Failed to save AI config');
+            }
+        }
+
         // Keyboard shortcuts
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeQrModal();
                 closeCreateSessionModal();
                 closeWebhooksModal();
+                closeScheduleModal();
+                closeRuleModal();
+                closeBroadcastModal();
             }
         });
 
@@ -2103,4 +3595,5 @@
         });
     </script>
 </body>
+
 </html>
