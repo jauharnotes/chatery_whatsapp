@@ -1,50 +1,91 @@
 version: '3.8'
 
 services:
-  chatery:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: chatery-whatsapp-api
-    restart: unless-stopped
-    ports:
-      - "${PORT:-3000}:3000"
+  # PostgreSQL Database
+  postgres:
+    image: pgvector/pgvector:pg16
     environment:
-      - NODE_ENV=production
-      - PORT=3000
-      - CORS_ORIGIN=${CORS_ORIGIN:-*}
-      - DASHBOARD_USERNAME=${DASHBOARD_USERNAME:-admin}
-      - DASHBOARD_PASSWORD=${DASHBOARD_PASSWORD:-admin123}
-      - API_KEY=${API_KEY:-}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+      POSTGRES_DB: bmg
+    ports:
+      - "5432:5432"
     volumes:
-      # Persist WhatsApp sessions
-      - chatery_sessions:/app/sessions
-      # Persist received media files
-      - chatery_media:/app/public/media
-      # Persist message store
-      - chatery_store:/app/store
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:3000/"]
-      interval: 30s
-      timeout: 10s
-      retries: 3
-      start_period: 10s
-    logging:
-      driver: "json-file"
-      options:
-        max-size: "10m"
-        max-file: "3"
-    networks:
-      - chatery-network
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Redis Cache
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # WhatsApp API Service
+  whatsapp-api:
+    build:
+      context: ./apps/whatsapp-api
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - PORT=3001
+      - API_KEY=${API_KEY:-securepassword123}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+    volumes:
+      - ./sessions:/app/sessions
+      - ./public/media:/app/public/media
+      - ./data:/app/data
+    depends_on:
+      redis:
+        condition: service_healthy
+      ai-service:
+        condition: service_started
+
+  # AI Assistant Service
+  ai-service:
+    build:
+      context: ./apps/ai-service
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+      - DATABASE_URL=postgresql://postgres:12345@postgres:5432/bmg
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - ENCRYPTION_KEY=${ENCRYPTION_KEY:-default-encryption-key-32chars}
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - CACHE_TTL_SCHEMA=3600
+      - CACHE_TTL_QUERY=300
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+
+  # Dashboard (React)
+  dashboard:
+    build:
+      context: ./apps/dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "5173:80"
+    depends_on:
+      - ai-service
 
 volumes:
-  chatery_sessions:
-    driver: local
-  chatery_media:
-    driver: local
-  chatery_store:
-    driver: local
-
-networks:
-  chatery-network:
-    driver: bridge
+  postgres_data:
+  redis_data:

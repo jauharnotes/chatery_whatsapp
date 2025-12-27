@@ -1,0 +1,12 @@
+{
+  "name": "@chatery/shared",
+  "version": "1.0.0",
+  "description": "Shared utilities and configurations",
+  "main": "src/index.js",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "dependencies": {
+    "ioredis": "^5.4.1"
+  }
+}

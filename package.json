@@ -1,37 +1,21 @@
 {
-  "name": "chatery_whatsapp",
+  "name": "chatery-whatsapp-monorepo",
   "version": "1.0.0",
-  "description": "Backend for chatery.app",
-  "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/farinchan/chatery_whatsapp.git"
-  },
-  "keywords": [
-    "chatery"
+  "private": true,
+  "description": "Chatery WhatsApp API with AI Assistant",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
   ],
-  "author": "Fajri Rinaldi Chan",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/farinchan/chatery_whatsapp/issues"
+  "scripts": {
+    "dev": "concurrently -n whatsapp,ai,dashboard -c blue,green,yellow \"npm run dev:whatsapp\" \"npm run dev:ai\" \"npm run dev:dashboard\"",
+    "dev:whatsapp": "npm run dev -w @chatery/whatsapp-api",
+    "dev:ai": "npm run dev -w @chatery/ai-service",
+    "dev:dashboard": "npm run dev -w @chatery/dashboard",
+    "build": "npm run build -w @chatery/dashboard",
+    "start": "npm run start -w @chatery/whatsapp-api & npm run start -w @chatery/ai-service"
   },
-  "homepage": "https://github.com/farinchan/chatery_whatsapp#readme",
-  "dependencies": {
-    "@whiskeysockets/baileys": "^7.0.0-rc.9",
-    "cors": "^2.8.5",
-    "dotenv": "^17.2.3",
-    "express": "^5.2.1",
-    "node-cron": "^4.2.1",
-    "pino": "^10.1.0",
-    "qrcode": "^1.5.4",
-    "socket.io": "^4.8.1",
-    "swagger-jsdoc": "^6.2.8",
-    "swagger-ui-express": "^5.0.1",
-    "uuid": "^13.0.0"
+  "devDependencies": {
+    "concurrently": "^8.2.2"
   }
 }
